@@ -1,0 +1,33 @@
+{
+  "name": "life-analytics",
+  "version": "1.0.0",
+  "description": "Life Monitoring: What's important to you?",
+  "main": "index.js",
+  "dependencies": {
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.14.1",
+    "cookie-parser": "^1.4.0",
+    "cookies": "^0.5.1",
+    "express": "^4.13.3",
+    "mongo": "^0.1.0",
+    "mongoose": "^4.2.4",
+    "nodemon": "^1.8.1",
+    "passport": "^0.3.0",
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danieldealday/Life-Analytics.git"
+  },
+  "author": "Codesmith Cohort 3",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danieldealday/Life-Analytics/issues"
+  },
+  "homepage": "https://github.com/danieldealday/Life-Analytics#readme"
+}
