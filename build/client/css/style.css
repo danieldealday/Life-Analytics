@@ -178,3 +178,14 @@ textarea {
   margin-top: -20px;
   text-align: right;
 }
+
+.title {
+  text-align: center;
+  color: #ffffff;
+  font-size: 60px;
+  margin: 0 0 40px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+
+}
