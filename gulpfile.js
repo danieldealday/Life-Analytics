@@ -17,7 +17,7 @@ function handleErrors() {
 
 function buildScript(file, watch) {
   var props = {
-    entries : ['./src/' + file],
+    entries : ['./build/' + file],
     debug : true,
     transform : [reactify]
   };
@@ -45,10 +45,10 @@ function buildScript(file, watch) {
 
 // run once
 gulp.task('scripts', function() {
-  return buildScript('/build/src/app.jsx', false);
+  return buildScript('/src/app.jsx', false);
 });
 
 // run 'scripts' task first, then watch for future changes
 gulp.task('default', ['scripts'], function() {
-  return buildScript('/build/src/app.jsx', true);
+  return buildScript('/src/app.jsx', true);
 });
