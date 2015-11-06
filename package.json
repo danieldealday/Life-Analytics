@@ -4,19 +4,25 @@
   "description": "Life Monitoring: What's important to you?",
   "main": "index.js",
   "dependencies": {
-    "bcryptjs": "^2.3.0",
     "body-parser": "^1.14.1",
+    "browserify": "^10.2.4",
     "cookie-parser": "^1.4.0",
-    "cookies": "^0.5.1",
     "express": "^4.13.3",
-    "mongo": "^0.1.0",
+    "gulp": "^3.9.0",
+    "gulp-notify": "^2.2.0",
+    "jquery": "^2.1.4",
+    "mongodb": "^2.0.47",
     "mongoose": "^4.2.4",
     "nodemon": "^1.8.1",
-    "passport": "^0.3.0",
-    "react": "^0.14.2",
-    "react-dom": "^0.14.2"
+    "react": "^0.14",
+    "react-dom": "^0.14.0",
+    "reactify": "^1.1.1",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.2.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
