@@ -109,7 +109,6 @@ function loginUser () {
 
 function allowDropStatus(ev) {
     ev.preventDefault();
-    console.log('hi');
 	return false;
 }
 

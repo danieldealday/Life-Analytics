@@ -326,14 +326,32 @@ textarea {
   width: 200px;
 }
 
- /* ========= Circles ========= */
+ /* ========= Graphs ========= */
 
+ .large-graph {
+   width: 600px;
+  margin: 0 auto;
+   display: block;
+ }
+ .graph {
+   display: block;
+   margin: 0 auto;
+   float:left;
+   padding-right: 120px;
+ }
 
- .circle {
+ .graph-right {
+   display: block;
+   margin: 0 auto;
+   float:right;
+
+ }
+
+ /*.circle {
    position: relative;
    height: 350px;
    width: 350px;
-   margin: 25px 25px;
+   margin: 25px 43px;
    display: inline-block;
    border-radius: 50%;
    /**
@@ -341,14 +359,14 @@ textarea {
     */
  }
 
- }
+ /*}
  .circle--timber {
    background: -webkit-linear-gradient(90deg, #fc00ff 0%, #00dbde 100%);
    background: linear-gradient(0deg, #fc00ff 0%, #00dbde 100%);
  }
  .circle--mojito {
-   background: -webkit-linear-gradient(90deg, #1D976C 0%, #93F9B9 100%);
-   background: linear-gradient(0deg, #1D976C 0%, #93F9B9 100%);
+   background: -webkit-linear-gradient(90deg, #179b77 0%, #93F9B9 100%);
+   background: linear-gradient(0deg, #179b77 0%, #93F9B9 100%);
  }
  .circle:before {
    position: absolute;
@@ -360,6 +378,7 @@ textarea {
    height: 80%;
    width: 80%;
    background: #fff;
+   opacity: 10%;
    border-radius: 50%;
    content: '';
  }
@@ -373,12 +392,18 @@ textarea {
    text-align: center;
  }
  .circle__content__headline {
-   font-size: 24px;
- }
+   font-size: 64px;
+   color: #1ab188;
+ }*/*/
 
 
 
  /* ========= Footer ========= */
+
+footer {
+  background: rgba(19, 35, 47, 0.9);
+}
+
 
 #footer {
   display: block;
@@ -423,4 +448,35 @@ textarea {
 
 .clear {
   clear: both;
+}
+
+.habits {
+  display: inline;
+  margin: 10px;
+  width: 418px;
+  height: 82px;
+  /*436, 96*/
+  border: 3px, solid, rgb(255,255,255);
+  outline: none;
+  border-radius: 0;
+  padding: 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: #294c65;
+  color: #ffffff;
+  -webkit-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+  -webkit-appearance: none;
+}
+.habits:hover, .habits:focus {
+  background: #3C7299;
+}
+
+.habits-block {
+  display: inline;
+  margin: 0 auto;
+  width: 436px;
+  height: 96px;
 }
