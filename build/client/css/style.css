@@ -333,7 +333,7 @@ textarea {
    position: relative;
    height: 350px;
    width: 350px;
-   margin: 25px 25px;
+   margin: 25px 43px;
    display: inline-block;
    border-radius: 50%;
    /**
@@ -347,8 +347,8 @@ textarea {
    background: linear-gradient(0deg, #fc00ff 0%, #00dbde 100%);
  }
  .circle--mojito {
-   background: -webkit-linear-gradient(90deg, #1D976C 0%, #93F9B9 100%);
-   background: linear-gradient(0deg, #1D976C 0%, #93F9B9 100%);
+   background: -webkit-linear-gradient(90deg, #179b77 0%, #93F9B9 100%);
+   background: linear-gradient(0deg, #179b77 0%, #93F9B9 100%);
  }
  .circle:before {
    position: absolute;
@@ -360,6 +360,7 @@ textarea {
    height: 80%;
    width: 80%;
    background: #fff;
+   opacity: 10%;
    border-radius: 50%;
    content: '';
  }
@@ -373,7 +374,8 @@ textarea {
    text-align: center;
  }
  .circle__content__headline {
-   font-size: 24px;
+   font-size: 64px;
+   color: #1ab188;
  }
 
 
