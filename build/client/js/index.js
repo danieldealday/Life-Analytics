@@ -46,7 +46,6 @@ $('.tab a').on('click', function (e) {
 
 function allowDropStatus(ev) {
     ev.preventDefault();
-    console.log('hi');
 	return false;
 }
 
