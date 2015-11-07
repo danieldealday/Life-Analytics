@@ -28,12 +28,8 @@ app.post('/login', usercontroller.verifyUser, function (req, res) {
   res.redirect('/dashboard');
 });
 
-app.post('/users', function (req, res) {
-  res.redirect('/dashboard');
-});
-
 app.get('/dashboard', function (req, res) {
-
+  res.sendFile(path.join(__dirname, './../dashboard.html'));
 });
 
 

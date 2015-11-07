@@ -1,7 +1,4 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-
-var User = new Schema({
+db.createCollection('User', {
   firstName: {type: String, unique: true},
   lastName: {type: String, unique: true},
   email: {type: String, unique: true},
@@ -28,6 +25,4 @@ var User = new Schema({
       weeklyContribution: {type: Number},
       bonus: null
   }
-});
-
-module.exports = mongoose.model('User', taskSchema);
+})
