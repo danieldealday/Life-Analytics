@@ -326,6 +326,58 @@ textarea {
   width: 200px;
 }
 
+ /* ========= Circles ========= */
+
+
+ .circle {
+   position: relative;
+   height: 350px;
+   width: 350px;
+   margin: 25px 25px;
+   display: inline-block;
+   border-radius: 50%;
+   /**
+    * Gradients by http://uigradients.com/
+    */
+ }
+
+ }
+ .circle--timber {
+   background: -webkit-linear-gradient(90deg, #fc00ff 0%, #00dbde 100%);
+   background: linear-gradient(0deg, #fc00ff 0%, #00dbde 100%);
+ }
+ .circle--mojito {
+   background: -webkit-linear-gradient(90deg, #1D976C 0%, #93F9B9 100%);
+   background: linear-gradient(0deg, #1D976C 0%, #93F9B9 100%);
+ }
+ .circle:before {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   -webkit-transform: translate(-50%, -50%);
+       -ms-transform: translate(-50%, -50%);
+           transform: translate(-50%, -50%);
+   height: 80%;
+   width: 80%;
+   background: #fff;
+   border-radius: 50%;
+   content: '';
+ }
+ .circle__content {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   -webkit-transform: translate(-50%, -50%);
+       -ms-transform: translate(-50%, -50%);
+           transform: translate(-50%, -50%);
+   text-align: center;
+ }
+ .circle__content__headline {
+   font-size: 24px;
+ }
+
+
+
  /* ========= Footer ========= */
 
 #footer {
