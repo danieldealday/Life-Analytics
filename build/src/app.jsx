@@ -4,12 +4,6 @@ var $ = require('jquery');
 
 console.log('app.jsx is working!');
 
-var Life = React.createClass({
-  render: function () {
-    return <div>THIS IS THE LIFE DIV</div>
-  }
-});
-
 var SignInPage = React.createClass({
   getInitialState: function () {
     return {
@@ -65,16 +59,10 @@ var LoginForm = React.createClass({
           <h1>Welcome Back!</h1>
           <form action="/" method="post">
             <div className="field-wrap">
-            <label>
-              Email Address<span className="req">*</span>
-            </label>
-            <input type="email"required autoComplete="off"/>
-          </div>
+              <input type="email" required autoComplete="off" placeholder="Email Address"/>
+            </div>
           <div className="field-wrap">
-            <label>
-              Password<span className="req">*</span>
-            </label>
-            <input type="password" required autoComplete="off"/>
+            <input type="password" required autoComplete="off" placeholder="Password"/>
           </div>
           <p className="forgot"><a href="#">Forgot Password?</a></p>
           <button className="button button-block">Log In</button>
@@ -94,29 +82,17 @@ var SignUpForm = React.createClass({
           <form action="/" method="post">
             <div className="top-row">
               <div className="field-wrap">
-                <label>
-                  First Name<span className="req">*</span>
-                </label>
-                <input type="text" name='firstName' required autoComplete="off" />
+                <input type="text" name='firstName' required autoComplete="off" placeholder="First Name"/>
               </div>
               <div className="field-wrap">
-                <label>
-                  Last Name<span className="req">*</span>
-                </label>
-                <input type="text" name='lastName' required autoComplete="off" />
+                <input type="text" name='lastName' required autoComplete="off" placeholder="Last Name"/>
               </div>
             </div>
             <div className="field-wrap">
-              <label>
-                Email Address<span className="req">*</span>
-              </label>
-              <input type="email" name='emailAddress' required autoComplete="off" />
+              <input type="email" name='emailAddress' required autoComplete="off" placeholder="Email Address"/>
             </div>
             <div className="field-wrap">
-              <label>
-                Set A Password<span className="req">*</span>
-              </label>
-              <input type="password" name='password' required autoComplete="off" />
+              <input type="password" name='password' required autoComplete="off" placeholder="Set A Password"/>
             </div>
             <button type="submit" onClick={this.createUser} className="button button-block">Get Started</button>
             </form>
@@ -125,11 +101,15 @@ var SignUpForm = React.createClass({
   }
 });
 
-var RankForm = React.createClass({
+var Questionnaire = React.createClass({
   getInitialState: function () {
-    return {
-      header: 'Now, which of these areas do you want to improve the most?'
-    };
+    return ({
+      header: 'Now, which of these areas do you want to improve the most?',
+      important: false,
+      better: false,
+      habits: false,
+      currentForm: <ImportantForm submit={this.submitForm}/>
+    });
   },
   allowDropStatus: function (event) {
     event.preventDefault();
@@ -147,53 +127,137 @@ var RankForm = React.createClass({
     event.stopPropagation();
     return false;
   },
-  submitForm: function () {
-    var rank1 = document.getElementById('rank1').value;
-    var rank2 = document.getElementById('rank2').value;
-    var rank3 = document.getElementById('rank3').value;
+  submitForm: function (event) {
+    event.preventDefault();
+    if (this.state.important === false) {
+      this.setState({
+        header: 'Which of these would you like to be awesome at?',
+        important: true,
+        better: false,
+        habits: false,
+        currentForm: <BetterForm submit={this.submitForm}/>
+      });
+    }
+    if (this.state.important === true && this.state.better === false) {
+      this.setState({
+        header: "That's a great place to start! Let's pick on a few things to work on.",
+        important: true,
+        better: true,
+        habits: false,
+        currentForm: <HabitsForm submit={this.submitForm}/>
+      });
+    }
   },
   render: function () {
     return (
       <div>
         <p className='heading'>{this.state.header}</p>
-
-        <div className="form-body">
-          <button id="financial" draggable="true" ondragstart={this.dragInitialize} className="button-imp button-imp-block">FINANCIAL</button>
-          <button id="personal" draggable="true" ondragstart={this.dragInitialize} className="button-imp button-imp-block">PERSONAL</button>
-          <button id="professional" draggable="true" ondragstart={this.dragInitialize} className="button-imp button-imp-block">PROFESSIONAL</button>
-
-          <div className="tab-content">
-            <div id="signup">
-              <h1></h1>
-              <form action="/" method="post">
-                <div className="field-wrap">
-                  <div id="rank1" className="dropped" ondrop={this.dropComplete} ondragover={this.allowDropStatus}>
-
-                  </div>
-                </div>
-
-                <div className="field-wrap">
-                  <div id="rank2" className="dropped" ondrop={this.dropComplete} ondragover={this.allowDropStatus}>
-
-                  </div>
-                </div>
-
-                <div className="field-wrap">
-                  <div id="rank3" className="dropped" ondrop={this.dropComplete} ondragover={this.allowDropStatus}>
-                  </div>
-                </div>
-                <button className="next-button next-button-block" onClick={this.submitForm}>next</button>
-
-              </form>
-            </div>
-              <div className="clear"></div>
-              <div className="clear"></div>
-            </div>
-          </div>
-          <button type="submit" className="next">NEXT</button>
-        </div>
+        {this.state.currentForm}
+      </div>
     )
   }
 });
 
-ReactDOM.render(<RankForm />, document.getElementById('SignUp'));
+var ImportantForm = React.createClass({
+  render: function () {
+    return (
+      <div>
+        <div className="form-body">
+          <CategoriesButtons/>
+          <QForm submit={this.props.submit}/>
+        </div>
+      </div>
+    )
+  }
+});
+
+var BetterForm = React.createClass({
+  render: function () {
+    return (
+      <div>
+        <div className="form-body">
+          <CategoriesButtons/>
+          <QForm submit={this.props.submit}/>
+        </div>
+      </div>
+    )
+  }
+});
+
+var HabitsForm = React.createClass({
+  render: function () {
+    return (
+      <div>
+        <div className="form-body">
+          <CategoriesButtons/>
+          <div className="tab-content">
+            <div>
+              <h1></h1>
+              <form action="/" method="post">
+                <div className="field-wrap">
+                  <input type="text" className="habits" placeholder="FINANCIAL habits..."></input>
+                  <input type="text" className="habits" placeholder="PERSONAL habits..."></input>
+                  <input type="text" className="habits" placeholder="PROFESSIONAL habits..."></input>
+                  <input type="text" className="habits" placeholder="FINANCIAL habits..."></input>
+                  <input type="text" className="habits" placeholder="PERSONAL habits..."></input>
+                  <input type="text" className="habits" placeholder="PROFESSIONAL habits..."></input>
+                  <input type="text" className="habits" placeholder="FINANCIAL habits..."></input>
+                  <input type="text" className="habits" placeholder="PERSONAL habits..."></input>
+                  <input type="text" className="habits" placeholder="PROFESSIONAL habits..."></input>
+                </div><br></br>
+                <button className="next-button next-button-block" onClick={this.props.submit}>next</button>
+              </form>
+            </div>
+              <div className="clear"></div>
+              <div className="clear"></div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+});
+
+var CategoriesButtons = React.createClass({
+    render: function () {
+      return (
+        <div>
+          <button id="financial" draggable="true" ondragstart={this.dragInitialize} className="button-imp button-imp-block">FINANCIAL</button>
+          <button id="personal" draggable="true" ondragstart={this.dragInitialize} className="button-imp button-imp-block">PERSONAL</button>
+          <button id="professional" draggable="true" ondragstart={this.dragInitialize} className="button-imp button-imp-block">PROFESSIONAL</button>
+        </div>
+      )
+    }
+});
+
+var QForm =React.createClass({
+    render: function () {
+      return (
+        <div>
+          <div className="tab-content">
+            <div>
+              <h1></h1>
+              <form action="/" method="post">
+                <div className="field-wrap">
+                  <div id="rank1" className="dropped" ondrop={this.dropComplete} ondragover={this.allowDropStatus}>
+                  </div>
+                </div>
+                <div className="field-wrap">
+                  <div id="rank2" className="dropped" ondrop={this.dropComplete} ondragover={this.allowDropStatus}>
+                  </div>
+                </div>
+                <div className="field-wrap">
+                  <div id="rank3" className="dropped" ondrop={this.dropComplete} ondragover={this.allowDropStatus}>
+                  </div>
+                </div>
+                <button className="next-button next-button-block" onClick={this.props.submit}>next</button>
+              </form>
+            </div>
+              <div className="clear"></div>
+              <div className="clear"></div>
+          </div>
+        </div>
+      )
+    }
+});
+
+ReactDOM.render(<Questionnaire />, document.getElementById('SignUp'));
