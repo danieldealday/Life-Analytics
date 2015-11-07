@@ -71,6 +71,16 @@ a:hover {
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
 }
 
+.form-body {
+  background: rgba(19, 35, 47, 0.9);
+  padding: 40px;
+  padding-bottom: 40px;
+  max-width: 1400px;
+  margin: 40px auto 90px auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+}
+
 .tab-group {
   list-style: none;
   padding: 0;
@@ -215,6 +225,52 @@ textarea {
   width: 100%;
 }
 
+
+/* ========= Importance Buttons ========= */
+
+
+.button-imp {
+  border: 0;
+  outline: none;
+  border-radius: 0;
+  padding: 15px 0;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: #1ab188;
+  color: #ffffff;
+  -webkit-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+  -webkit-appearance: none;
+}
+.button-imp:hover, .button-imp:focus {
+  background: #179b77;
+}
+
+.button-imp-block {
+  display: inline;
+  margin: 0 auto;
+  width: 436px;
+  height: 96px;
+}
+
+/* ========= Button Drops ========= */
+
+.dropped {
+  margin: 0 auto;
+  display: block;
+  width: 440px;
+  height: 100px;
+  border: 2px solid #fff;
+}
+
+.dropped:hover {
+  border: 2px solid #1ab188;
+}
+
+/* ========= Button Drops ========= */
+
 .forgot {
   margin-top: -20px;
   text-align: right;
@@ -230,6 +286,47 @@ textarea {
   letter-spacing: .1em;
   max-width: 100%;
 }
+
+.heading {
+  text-align: center;
+  color: #ffffff;
+  font-size: 30px;
+  margin: 40px 0 40px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  max-width: 100%;
+}
+
+/* ========= Next Button ========= */
+
+.next-button {
+  float:right;
+  border: 0;
+  outline: none;
+  border-radius: 0;
+  padding: 10px 0;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: #1ab188;
+  color: #ffffff;
+  -webkit-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+  -webkit-appearance: none;
+
+}
+.next-button:hover, .next-button:focus {
+  background: #179b77;
+}
+
+.next-button-block {
+  display: block;
+  width: 200px;
+}
+
+ /* ========= Footer ========= */
 
 #footer {
   display: block;
@@ -270,4 +367,8 @@ textarea {
   float: right;
   line-height: 10px;
   margin-right: 20px;
+}
+
+.clear {
+  clear: both;
 }
