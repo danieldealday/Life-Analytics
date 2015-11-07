@@ -42,6 +42,7 @@ $('.tab a').on('click', function (e) {
 
 });
 
+<<<<<<< HEAD
 // new user object created REQUIRES route for POST
 
 
@@ -103,4 +104,26 @@ function loginUser () {
     password: loginPassword
   };
   $.post('http://localhost:3000/login', Credentials);
+=======
+/* ========== Drag & Drop ========== */
+
+function allowDropStatus(ev) {
+    ev.preventDefault();
+    console.log('hi');
+	return false;
+}
+
+function dragInitialize(ev) {
+   ev.dataTransfer.effectAllowed='move';
+   ev.dataTransfer.setData("Text", ev.target.getAttribute('id'));
+   return true;
+}
+
+function dropComplete(ev) {
+    ev.preventDefault();
+    var src = ev.dataTransfer.getData("Text");
+   ev.target.appendChild(document.getElementById(src));
+   ev.stopPropagation();
+   return false;
+>>>>>>> a9b7f02fbe96a8d933b77c750043d3459fc68fe6
 }
