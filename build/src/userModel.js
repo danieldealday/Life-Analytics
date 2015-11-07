@@ -8,38 +8,25 @@ var User = new Schema({
   password: {type: String, unique: true},
   applicationData: {
     personalData: {
-      habit: {
-        value1: {type: String, unique: true},
-        value2: {type: String, unique: true},
-        value3: {type: String, unique: true}
-      },
+      habits: [],
       cumulative: {type: Number},
       weeklyTotal: {type: Number},
       weeklyContribution: {type: Number},
-      bonus: null
+      bonus: undefined
     },
     professionalData: {
-      habit: {
-        value1: {type: String, unique: true},
-        value2: {type: String, unique: true},
-        value3: {type: String, unique: true}
-      },
+      habits: [],
       cumulative: {type: Number},
       weeklyTotal: {type: Number},
       weeklyContribution: {type: Number},
-      bonus: null
+      bonus: undefined
     },
     financialData: {
-      habit: {
-        value1: {type: String, unique: true},
-        value2: {type: String, unique: true},
-        value3: {type: String, unique: true}
-      },
+      habits: [],
       cumulative: {type: Number},
       weeklyTotal: {type: Number},
       weeklyContribution: {type: Number},
-      bonus: null
-    }
+      bonus: undefined
   }
 });
 
