@@ -326,10 +326,28 @@ textarea {
   width: 200px;
 }
 
- /* ========= Circles ========= */
+ /* ========= Graphs ========= */
 
+ .large-graph {
+   width: 600px;
+  margin: 0 auto;
+   display: block;
+ }
+ .graph {
+   display: block;
+   margin: 0 auto;
+   float:left;
+   padding-right: 120px;
+ }
 
- .circle {
+ .graph-right {
+   display: block;
+   margin: 0 auto;
+   float:right;
+
+ }
+
+ /*.circle {
    position: relative;
    height: 350px;
    width: 350px;
@@ -341,7 +359,7 @@ textarea {
     */
  }
 
- }
+ /*}
  .circle--timber {
    background: -webkit-linear-gradient(90deg, #fc00ff 0%, #00dbde 100%);
    background: linear-gradient(0deg, #fc00ff 0%, #00dbde 100%);
@@ -376,11 +394,16 @@ textarea {
  .circle__content__headline {
    font-size: 64px;
    color: #1ab188;
- }
+ }*/*/
 
 
 
  /* ========= Footer ========= */
+
+footer {
+  background: rgba(19, 35, 47, 0.9);
+}
+
 
 #footer {
   display: block;
