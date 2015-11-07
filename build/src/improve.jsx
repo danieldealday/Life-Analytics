@@ -3,6 +3,11 @@ var ReactDOM = require('react-dom');
 var $ = require('jquery');
 
 var RankForm = React.createClass({
+  getInitialState: function () {
+    return {
+
+    };
+  },
   allowDropStatus: function (event) {
     event.preventDefault();
   	return false;
@@ -27,46 +32,44 @@ var RankForm = React.createClass({
   render: function () {
     return (
       <div>
-        <p class='heading'> Now, which of these areas do you want to improve the most?</p>
+        <p className='heading'> Now, which of these areas do you want to improve the most?</p>
 
-        <div class="form-body">
-          <button id="financial" draggable="true" ondragstart={this.state.dragInitialize} class="button-imp button-imp-block">FINANCIAL</button>
-          <button id="personal" draggable="true" ondragstart={this.state.dragInitialize} class="button-imp button-imp-block">PERSONAL</button>
-          <button id="professional" draggable="true" ondragstart={this.state.dragInitialize} class="button-imp button-imp-block">PROFESSIONAL</button>
+        <div className="form-body">
+          <button id="financial" draggable="true" ondragstart={this.dragInitialize} className="button-imp button-imp-block">FINANCIAL</button>
+          <button id="personal" draggable="true" ondragstart={this.dragInitialize} className="button-imp button-imp-block">PERSONAL</button>
+          <button id="professional" draggable="true" ondragstart={this.dragInitialize} className="button-imp button-imp-block">PROFESSIONAL</button>
 
-          <div class="tab-content">
+          <div className="tab-content">
             <div id="signup">
               <h1></h1>
               <form action="/" method="post">
-                <div class="field-wrap">
-                  <div id="rank1" class="dropped" ondrop={this.state.dropComplete} ondragover={this.state.allowDropStatus}>
+                <div className="field-wrap">
+                  <div id="rank1" className="dropped" ondrop={this.dropComplete} ondragover={this.allowDropStatus}>
 
                   </div>
                 </div>
 
-                <div class="field-wrap">
-                  <div id="rank2" class="dropped" ondrop={this.state.dropComplete} ondragover={this.state.allowDropStatus}>
+                <div className="field-wrap">
+                  <div id="rank2" className="dropped" ondrop={this.dropComplete} ondragover={this.allowDropStatus}>
 
                   </div>
                 </div>
 
-                <div class="field-wrap">
-                  <div id="rank3" class="dropped" ondrop={this.state.dropComplete} ondragover={this.state.allowDropStatus}>
+                <div className="field-wrap">
+                  <div id="rank3" className="dropped" ondrop={this.dropComplete} ondragover={this.allowDropStatus}>
                   </div>
                 </div>
-                <button class="next-button next-button-block" onClick={this.submitForm}>next</button>
+                <button className="next-button next-button-block" onClick={this.submitForm}>next</button>
 
               </form>
             </div>
-            <div class="clear"></div>
-              <button class="next-button next-button-block">next</button>
-              <div class="clear"></div>
+              <div className="clear"></div>
+              <div className="clear"></div>
             </div>
           </div>
-          <button type="submit" class="next">NEXT</button>
+          <button type="submit" className="next">NEXT</button>
         </div>
     )
   }
 });
-
 ReactDOM.render(<RankForm />, document.getElementById('improvement'));
