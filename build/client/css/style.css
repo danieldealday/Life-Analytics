@@ -450,6 +450,7 @@ footer {
   clear: both;
 }
 
+<<<<<<< HEAD
 .tasks {
   display: inline;
   float: left;
@@ -484,4 +485,35 @@ footer {
 .clicked {
   background-color: #1ab188;
   color: #fff;
+=======
+.habits {
+  display: inline;
+  margin: 10px;
+  width: 418px;
+  height: 82px;
+  /*436, 96*/
+  border: 3px, solid, rgb(255,255,255);
+  outline: none;
+  border-radius: 0;
+  padding: 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: #294c65;
+  color: #ffffff;
+  -webkit-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+  -webkit-appearance: none;
+}
+.habits:hover, .habits:focus {
+  background: #3C7299;
+}
+
+.habits-block {
+  display: inline;
+  margin: 0 auto;
+  width: 436px;
+  height: 96px;
+>>>>>>> a9f54e659ae1e1fb92fb1aafd9025c6e600509b6
 }
