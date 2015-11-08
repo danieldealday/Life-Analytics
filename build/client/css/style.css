@@ -485,7 +485,7 @@ footer {
 .clicked {
   background-color: #1ab188;
   color: #fff;
-=======
+}
 .habits {
   display: inline;
   margin: 10px;
@@ -515,5 +515,4 @@ footer {
   margin: 0 auto;
   width: 436px;
   height: 96px;
->>>>>>> a9f54e659ae1e1fb92fb1aafd9025c6e600509b6
 }
