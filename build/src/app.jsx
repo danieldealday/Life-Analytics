@@ -8,13 +8,23 @@ var SignInPage = React.createClass({
   getInitialState: function () {
     return {
       signUpStatus: true,
-      loginStatus: false
+      loginStatus: false,
+      demo: false
     }
+  },
+  demoSignIn: function (event) {
+    event.preventDefault();
+    this.setState({
+      demo: true
+    });
   },
   clickLoginButton: function(event) {
     event.preventDefault();
     console.log('clicked login button');
-    this.setState({signUpStatus: false, loginStatus: true});
+    this.setState({
+      signUpStatus: false,
+      loginStatus: true
+    });
   },
   clickSignUpButton: function(event) {
     event.preventDefault();
@@ -26,27 +36,36 @@ var SignInPage = React.createClass({
     console.log('User Created!');
   },
   render: function() {
-    var signUp = <SignUpForm signUpStatus={this.state.signUpStatus} createUser = {this.createUser}/>;
-    var login = <LoginForm loginStatus={this.state.loginStatus} createUser = {this.createUser}/>;
+    var signUp = <SignUpForm signUpStatus={this.state.signUpStatus} createUser = {this.createUser} demos={this.demoSignIn}/>;
+    var login = <LoginForm loginStatus={this.state.loginStatus} createUser = {this.createUser} demos={this.demoSignIn}/>;
 
     console.log(signUp);
 
-    return (
-      <div>
-        <div className="form">
-          <ul className="tab-group">
-            <li onClick={this.clickSignUpButton} className={(this.state.signUpStatus) ? 'tab active':'tab'}><a href="#signup">Sign Up</a></li>
-            <li onClick={this.clickLoginButton} className={(this.state.loginStatus) ? 'tab active':'tab'}><a href="#login">Log In</a></li>
-          </ul>
-          <div className="tab-content">
-          <SignUpForm signUpStatus={this.state.signUpStatus} createUser = {this.createUser} />
-          </div>
-          {(this.state.signUpStatus) ? signUp:login}
-          <script src="js/index.js"></script>
-      </div>
+    if(this.state.demo === false) {
+      return (
+        <div>
+          <div className="form">
+            <ul className="tab-group">
+              <li onClick={this.clickSignUpButton} className={(this.state.signUpStatus) ? 'tab active':'tab'}><a href="#signup">Sign Up</a></li>
+              <li onClick={this.clickLoginButton} className={(this.state.loginStatus) ? 'tab active':'tab'}><a href="#login">Log In</a></li>
+            </ul>
+            <div className="tab-content">
+            <SignUpForm signUpStatus={this.state.signUpStatus} createUser = {this.createUser} />
+            </div>
+            {(this.state.signUpStatus) ? signUp:login}
+            <script src="js/index.js"></script>
+        </div>
 
-    </div>
-    )
+      </div>
+      )
+    }
+    else if (this.state.demo === true) {
+      return (
+        <div>
+          <Questionnaire />
+        </div>
+      )
+    }
 
   }
 });
@@ -65,7 +84,7 @@ var LoginForm = React.createClass({
             <input type="password" required autoComplete="off" placeholder="Password"/>
           </div>
           <p className="forgot"><a href="#">Forgot Password?</a></p>
-          <button className="button button-block">Log In</button>
+          <button className="button button-block" onClick={this.props.demos}>Log In</button>
         </form>
         </div>
       </div>
@@ -94,7 +113,7 @@ var SignUpForm = React.createClass({
             <div className="field-wrap">
               <input type="password" name='password' required autoComplete="off" placeholder="Set A Password"/>
             </div>
-            <button type="submit" onClick={this.createUser} className="button button-block">Get Started</button>
+            <button type="submit" onClick={this.props.demos} className="button button-block" >Get Started</button>
             </form>
         </div>
     )
@@ -108,9 +127,15 @@ var Questionnaire = React.createClass({
       important: false,
       better: false,
       habits: false,
+      rank1: 'notSelected',
+      rank2: 'notSelected',
+      rank3: 'notSelected',
+      currentSelectedArea: null,
+      currentSelectedRank: null,
       currentForm: <ImportantForm submit={this.submitForm}/>
     });
   },
+  
   allowDropStatus: function (event) {
     event.preventDefault();
   	return false;
@@ -133,17 +158,13 @@ var Questionnaire = React.createClass({
       this.setState({
         header: 'Which of these would you like to be awesome at?',
         important: true,
-        better: false,
-        habits: false,
         currentForm: <BetterForm submit={this.submitForm}/>
       });
     }
     if (this.state.important === true && this.state.better === false) {
       this.setState({
         header: "That's a great place to start! Let's pick on a few things to work on.",
-        important: true,
         better: true,
-        habits: false,
         currentForm: <HabitsForm submit={this.submitForm}/>
       });
     }
@@ -219,45 +240,53 @@ var HabitsForm = React.createClass({
 
 var CategoriesButtons = React.createClass({
     render: function () {
+      var newButtons = {
+        notSelected: '',
+        financial: <button onClick={this.selectRank} id="rank1"  draggable="true" ondragstart={this.dragInitialize} className="button-imp button-imp-block">FINANCIAL</button>,
+        personal: <button onClick={this.selectRank} id="rank1"  draggable="true" ondragstart={this.dragInitialize} className="button-imp button-imp-block">PERSONAL</button>,
+        professional: <button onClick={this.selectRank} id="rank1"  draggable="true" ondragstart={this.dragInitialize} className="button-imp button-imp-block">PROFESSIONAL</button>
+      };
       return (
         <div>
-          <button id="financial" draggable="true" ondragstart={this.dragInitialize} className="button-imp button-imp-block">FINANCIAL</button>
-          <button id="personal" draggable="true" ondragstart={this.dragInitialize} className="button-imp button-imp-block">PERSONAL</button>
-          <button id="professional" draggable="true" ondragstart={this.dragInitialize} className="button-imp button-imp-block">PROFESSIONAL</button>
+          <button id="financial" onClick={this.selectArea} draggable="true" ondragstart={this.dragInitialize} className="button-imp button-imp-block">FINANCIAL</button>
+          <button id="personal" onClick={this.selectArea} draggable="true" ondragstart={this.dragInitialize} className="button-imp button-imp-block">PERSONAL</button>
+          <button id="professional" onClick={this.selectArea} draggable="true" ondragstart={this.dragInitialize} className="button-imp button-imp-block">PROFESSIONAL</button>
         </div>
       )
     }
 });
 
 var QForm =React.createClass({
-    render: function () {
-      return (
-        <div>
-          <div className="tab-content">
-            <div>
-              <h1></h1>
-              <form action="/" method="post">
-                <div className="field-wrap">
-                  <div id="rank1" className="dropped" ondrop={this.dropComplete} ondragover={this.allowDropStatus}>
-                  </div>
+  render: function () {
+    return (
+      <div>
+        <div className="tab-content">
+          <div>
+            <h1></h1>
+            <form action="/" method="post">
+              <div className="field-wrap">
+                <div id="rank1" className="dropped" ondrop={this.dropComplete} ondragover={this.allowDropStatus}>
                 </div>
-                <div className="field-wrap">
-                  <div id="rank2" className="dropped" ondrop={this.dropComplete} ondragover={this.allowDropStatus}>
-                  </div>
+              </div>
+              <div className="field-wrap">
+                <div id="rank2" className="dropped" ondrop={this.dropComplete} ondragover={this.allowDropStatus}>
                 </div>
-                <div className="field-wrap">
-                  <div id="rank3" className="dropped" ondrop={this.dropComplete} ondragover={this.allowDropStatus}>
-                  </div>
+              </div>
+              <div className="field-wrap">
+                <div id="rank3" className="dropped" ondrop={this.dropComplete} ondragover={this.allowDropStatus}>
                 </div>
-                <button className="next-button next-button-block" onClick={this.props.submit}>next</button>
-              </form>
-            </div>
-              <div className="clear"></div>
-              <div className="clear"></div>
+              </div>
+              <button className="next-button next-button-block" onClick={this.props.submit}>next</button>
+            </form>
           </div>
+          <div className="clear"></div>
+          <div className="clear"></div>
         </div>
-      )
-    }
+      </div>
+    )
+  }
 });
 
-ReactDOM.render(<Questionnaire />, document.getElementById('SignUp'));
+
+
+ReactDOM.render(<SignInPage />, document.getElementById('SignUp'));
