@@ -449,3 +449,39 @@ footer {
 .clear {
   clear: both;
 }
+
+.tasks {
+  display: inline;
+  float: left;
+  width: 400px;
+  height: 100px;
+  border: 2px solid #fff;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 40px;
+
+}
+
+.tasks p {
+  /*color: #1ab188;*/
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+  padding-top: 5px;
+}
+
+.tasks:hover {
+  border: 2px solid #1ab188;
+}
+
+.boxes {
+  display: inline;
+
+}
+
+.clicked {
+  background-color: #1ab188;
+  color: #fff;
+}
