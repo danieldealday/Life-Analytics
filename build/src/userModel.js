@@ -27,6 +27,7 @@ var User = new Schema({
       weeklyTotal: {type: Number},
       weeklyContribution: {type: Number},
       bonus: null
+    }
   }
 });
 
