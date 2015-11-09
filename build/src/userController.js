@@ -1,7 +1,7 @@
 var User = require('./userModel');
 var express = require('express');
 var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
+// var bodyParser = require('body-parser');
 
 var userConroller = {};
 userConroller.createUser = createUser;
@@ -34,8 +34,9 @@ function createUser (req, res, next) {
         weeklyTotal: {type: Number},
         weeklyContribution: {type: Number},
         bonus: undefined
+      }
     }
-  },
+  };
   User.create(user, function (error) {
     if (error) {
       return res.redirect('/');
@@ -58,4 +59,4 @@ function updateUserData () {
 
 }
 
-module.exports = taskController;
+module.exports = userController;

@@ -1,12 +1,13 @@
 var express = require('express');
 var mongodb = require('mongo');
 var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var bcrypt = require('bcryptjs');
-var passport = require('passport');
+// var bodyParser = require('body-parser');
+// var cookieParser = require('cookie-parser');
+// var bcrypt = require('bcryptjs');
+// var passport = require('passport');
 var app = express();
-var userController = require('./../userController');
+var path = require('path');
+// var userController = require('./../src/userController');
 
 mongoose.connect('mongodb://localhost/life-analytics');
 mongoose.connection.once('open', function () {
@@ -14,19 +15,19 @@ mongoose.connection.once('open', function () {
 });
 
 app.use(express.static(path.join(__dirname, './build')));
-app.use(bodyParser());
+// app.use(bodyParser());
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, './../index.html'));
+  res.sendFile(path.join(__dirname, './../client/index.html'));
 });
 
-app.get('/signup', userController.createUser, usercontroller.verifyUser, function (req, res) {
-  res.redirect('/questionnaire');
-});
-
-app.post('/login', usercontroller.verifyUser, function (req, res) {
-  res.redirect('/dashboard');
-});
+// app.get('/signup', userController.createUser, usercontroller.verifyUser, function (req, res) {
+//   res.redirect('/questionnaire');
+// });
+//
+// app.post('/login', usercontroller.verifyUser, function (req, res) {
+//   res.redirect('/dashboard');
+// });
 
 app.get('/dashboard', function (req, res) {
   res.sendFile(path.join(__dirname, './../dashboard.html'));
