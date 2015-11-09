@@ -4,6 +4,7 @@
   "description": "Life Monitoring: What's important to you?",
   "main": "index.js",
   "dependencies": {
+    "bcrypt": "^0.8.5",
     "body-parser": "^1.14.1",
     "browserify": "^10.2.4",
     "cookie-parser": "^1.4.0",
@@ -16,6 +17,7 @@
     "mongodb": "^2.0.47",
     "mongoose": "^4.2.4",
     "nodemon": "^1.8.1",
+    "path": "^0.12.7",
     "react": "^0.14",
     "react-dom": "^0.14.0",
     "reactify": "^1.1.1",
@@ -26,7 +28,7 @@
     "gulp": "^3.9.0"
   },
   "scripts": {
-    "start": "node_modules/.bin/gulp",
+    "start": "nodemon ./build/server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
