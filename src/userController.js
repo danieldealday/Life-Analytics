@@ -1,11 +1,17 @@
+
 var User = require('./userModel');
 var express = require('express');
 var mongoose = require('mongoose');
+
+// var User = require('./userModel');
+// var express = require('express');
+// var mongoose = require('mongoose');
+
 // var bodyParser = require('body-parser');
 
-var userConroller = {};
-userConroller.createUser = createUser;
-userConroller.postTasks = postTasks;
+// var userController = {};
+// userController.createUser = createUser;
+// userController.postTasks = postTasks;
 
 function createUser (req, res, next) {
   var user = {
@@ -45,18 +51,23 @@ function createUser (req, res, next) {
   });
 }
 
-function verifyUser (req, res) {
-  var credentials = req.body;
-  User.find(req.body, function (err, userData) {
-    if (err) {
-      res.redirect('/');
-    }
-    return res.redirect('/dashboard');
-  });
-}
 
-function updateUserData () {
+// function verifyUser (req, res) {
+//   var credentials = req.body;
+//   User.find(req.body, function (err, userData) {
+//     if (err) {
+//       res.redirect('/');
+//     }
+//     return res.redirect('/dashboard');
+//   });
+// }
 
-}
+// function updateUserData () {
+
+// }
+
+
+// module.exports = taskController;
 
 module.exports = userController;
+
