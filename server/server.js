@@ -1,5 +1,5 @@
 var express = require('express');
-var user = require('./User/User.js')
+var user = require('./User/userModel.js')
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 var app = express();
@@ -17,7 +17,9 @@ mongoose.connection.once('open', function() {
 // 	email: { type: String, unique: true }
 // });
 
-app.use(express.static(path.join(__dirname, './build/client/')));
+app.use(express.static(path.join(__dirname, './../client/')));
+// LEONARD'S NOTE: EXPRESS.STATIC LOOKS FOR THE INDEX.HTML BY DEFAULT
+
 // app.use(bodyParser());
 
 // app.get('/', function (req, res) {
