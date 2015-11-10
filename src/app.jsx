@@ -48,7 +48,7 @@ var Page = React.createClass({
       password: password
   	}
     $.ajax({
-      url: 'http:localhost:3000/create',
+      url: 'http://localhost:3000/create',
       method: 'POST',
       data: JSON.stringify(userObject),
       success: function(res){
@@ -56,7 +56,7 @@ var Page = React.createClass({
         console.log(JSON.parse(res));
       },
       error: function(xhr, status, err) {
-        console.log(error)
+        console.log(err)
       } 
     });
 

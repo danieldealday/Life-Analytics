@@ -1,5 +1,5 @@
 var express = require('express');
-var user = require('./User/User.js')
+// var user = require('./User/User.js')
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 var app = express();
@@ -17,11 +17,11 @@ mongoose.connection.once('open', function() {
 // 	email: { type: String, unique: true }
 // });
 
-app.use(express.static(path.join(__dirname, './build/client/')));
+app.use(express.static(path.join(__dirname, './../client/')));
 // app.use(bodyParser());
-// app.post('/create', function(req,res) {
-// 	console.log('ITW WORKSs');
-// })
+app.post('/create', function(req,res) {
+	console.log('ITW WORKSs');
+})
 // app.get('/', function (req, res) {
 //  res.sendFile(path.join(__dirname, './../client/index.html'));
 // });
