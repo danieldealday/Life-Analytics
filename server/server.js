@@ -17,7 +17,7 @@ mongoose.connection.once('open', function() {
 // 	email: { type: String, unique: true }
 // });
 
-app.use(express.static(path.join(__dirname, './build/client/')));
+app.use(express.static(path.join(__dirname, './../client/')));
 // app.use(bodyParser());
 
 // app.get('/', function (req, res) {
