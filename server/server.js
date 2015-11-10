@@ -18,10 +18,11 @@ mongoose.connection.once('open', function() {
 // });
 
 app.use(express.static(path.join(__dirname, './../client/')));
-// LEONARD'S NOTE: EXPRESS.STATIC LOOKS FOR THE INDEX.HTML BY DEFAULT
 
 // app.use(bodyParser());
-
+app.post('/create', function(req,res) {
+	console.log('ITW WORKSs');
+})
 // app.get('/', function (req, res) {
 //  res.sendFile(path.join(__dirname, './../client/index.html'));
 // });
