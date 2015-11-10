@@ -14,12 +14,12 @@ mongoose.connection.once('open', function () {
   console.log('Connected to life-analytics database');
 });
 
-app.use(express.static(path.join(__dirname, './build')));
+// app.use(express.static(path.join(__dirname, './build')));
 // app.use(bodyParser());
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, './../client/index.html'));
-});
+// app.get('/', function (req, res) {
+//   res.sendFile(path.join(__dirname, './../client/index.html'));
+// });
 
 // app.get('/signup', userController.createUser, usercontroller.verifyUser, function (req, res) {
 //   res.redirect('/questionnaire');
@@ -29,9 +29,9 @@ app.get('/', function (req, res) {
 //   res.redirect('/dashboard');
 // });
 
-app.get('/dashboard', function (req, res) {
-  res.sendFile(path.join(__dirname, './../dashboard.html'));
-});
+// app.get('/dashboard', function (req, res) {
+//   res.sendFile(path.join(__dirname, './../dashboard.html'));
+// });
 
 
 
