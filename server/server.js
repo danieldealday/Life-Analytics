@@ -19,9 +19,9 @@ var app = express();
 
 app.use(express.static(path.join(__dirname, './../client/')));
 
-app.get('/', function (req, res) {
- res.sendFile(path.join(__dirname, './../client/index.html'));
-});
+// app.get('/', function (req, res) {
+//  res.sendFile(path.join(__dirname, './../client/index.html'));
+// });
 
 
 
@@ -39,3 +39,5 @@ app.get('/', function (req, res) {
 
 app.listen(3000); //listens on port 3000 -> http://localhost:3000/
 
+ // "watch-scss": "node-sass -w scss/style.scss client/css/style.css",
+  // "start-server": "gulp & npm run watch-scss & node server/server.js",

@@ -1,3 +1,5 @@
+var React = require('react');
+var ReactDOM = require('react-dom');
 
 var SignUpForm = React.createClass({
   render: function() {

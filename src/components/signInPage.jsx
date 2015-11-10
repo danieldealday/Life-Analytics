@@ -1,3 +1,8 @@
+var React = require('react');
+var ReactDOM = require('react-dom');
+var SignUpForm = require('./signUpForm.jsx');
+var LoginForm = require('./logInForm.jsx')
+var Questionnaire = require('./questionnaire.jsx')
 
 var SignInPage = React.createClass({
   getInitialState: function () {
@@ -54,13 +59,13 @@ var SignInPage = React.createClass({
       </div>
       )
     }
-    // else if (this.state.demo === true) {
-    //   return (
-    //     <div>
-    //       <Questionnaire />
-    //     </div>
-    //   )
-    // }
+    else if (this.state.demo === true) {
+      return (
+        <div>
+          <Questionnaire />
+        </div>
+      )
+    }
 
   }
 });

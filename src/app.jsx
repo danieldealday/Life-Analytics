@@ -1,11 +1,11 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var $ = require('jquery');
-var Questionnaire = require('./../components/questionnaire');
-var LogInForm = require('./../components/logInForm');
-var SignInPage = require('./../components/signInPage');
-var SignUpForm = require('./../components/signUpForm');
-var Graph = require('./../components/graph')
+var Questionnaire = require('./components/questionnaire.jsx');
+var LoginForm = require('./components/logInForm.jsx');
+var SignInPage = require('./components/signInPage.jsx');
+var SignUpForm = require('./components/signUpForm.jsx');
+// var Graph = require('./../client/components/graph.jsx')
 
 console.log('app.jsx is working!');
 

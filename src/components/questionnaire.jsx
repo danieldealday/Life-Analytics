@@ -1,3 +1,6 @@
+var React = require('react');
+var ReactDOM = require('react-dom');
+
 var Questionnaire = React.createClass({
   getInitialState: function () {
     return ({
@@ -10,7 +13,7 @@ var Questionnaire = React.createClass({
       rank3: 'notSelected',
       currentSelectedArea: null,
       currentSelectedRank: null,
-      currentForm: <ImportantForm submit={this.submitForm}/>
+      // currentForm: <ImportantForm submit={this.submitForm}/>
     });
   },
 
