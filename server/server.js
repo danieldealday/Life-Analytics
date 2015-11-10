@@ -1,43 +1,32 @@
 var express = require('express');
-
-var mongodb = require('mongo');
+var user = require('./User/User.js')
 var mongoose = require('mongoose');
-// var bodyParser = require('body-parser');
-// var cookieParser = require('cookie-parser');
-var path = require('path');
-// var bcrypt = require('bcrypt');
-// var passport = require('passport');
+var schema = mongoose.Schema;
 var app = express();
-// var userController = require('./../src/userController');
+var path = require('path');
+mongoose.connect('mongodb://localhost/userInfo');
+mongoose.connection.once('open', function() {
+	console.log('Connected with MongoDB ORM - mongodb-orm');
+});
 
-// var bodyParser = require('body-parser');
-// var cookieParser = require('cookie-parser');
-// var bcrypt = require('bcryptjs');
-// var passport = require('passport');
+// var userInfo = new Schema({
+// 	username: { type: String, unique: true },
+// 	firstName: { type: String unique: true },
+// 	lastName: { type: String, unique: true },
+// 	password: { type: String, unique: true },
+// 	email: { type: String, unique: true }
+// });
 
-
-
-app.use(express.static(path.join(__dirname, './../client/')));
-
+app.use(express.static(path.join(__dirname, './build/client/')));
+// app.use(bodyParser());
+// app.post('/create', function(req,res) {
+// 	console.log('ITW WORKSs');
+// })
 // app.get('/', function (req, res) {
 //  res.sendFile(path.join(__dirname, './../client/index.html'));
 // });
 
-
-
-// app.get('/signup', userController.createUser, usercontroller.verifyUser, function (req, res) {
-//   res.redirect('/questionnaire');
-// });
-
-// app.post('/login', usercontroller.verifyUser, function (req, res) {
-//   res.redirect('/dashboard');
-// });
-
-// app.get('/dashboard', function (req, res) {
-//   res.sendFile(path.join(__dirname, './../dashboard.html'));
-// });
-
 app.listen(3000); //listens on port 3000 -> http://localhost:3000/
 
- // "watch-scss": "node-sass -w scss/style.scss client/css/style.css",
-  // "start-server": "gulp & npm run watch-scss & node server/server.js",
+// /test with schema of username, first, last name, password, email
+// enter information into database

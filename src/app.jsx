@@ -36,16 +36,31 @@ var Page = React.createClass({
   //Fuction passed down to Sign Up Form
   createUser: function(event) {
    
-    console.log('User Created!');
-    console.log(event);
+    console.log('inside user created')
   	var firstName = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.firstName).value
   	var lastName = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.lastName).value
   	var email = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.email).value
   	var password = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.password).value
-  	console.log(firstName, lastName, email, password);
   	var userObject = {
-
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password
   	}
+    $.ajax({
+      url: 'http:localhost:3000/create',
+      method: 'POST',
+      data: JSON.stringify(userObject),
+      success: function(res){
+        console.log('User Created!');
+        console.log(JSON.parse(res));
+      },
+      error: function(xhr, status, err) {
+        console.log(error)
+      } 
+    });
+
+
 
   },
 
