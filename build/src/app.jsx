@@ -135,7 +135,7 @@ var Questionnaire = React.createClass({
       currentForm: <ImportantForm submit={this.submitForm}/>
     });
   },
-  
+
   allowDropStatus: function (event) {
     event.preventDefault();
   	return false;
