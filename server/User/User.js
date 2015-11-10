@@ -3,11 +3,7 @@ var Schema = mongoose.Schema;
 
 
 var userInfo = new Schema({
-	username: { 
-		type: String, 
-		unique: true, 
-		required: true 
-	},
+
 	firstName: { 
 		type: String,
 		unique: true, 
@@ -31,7 +27,7 @@ var userInfo = new Schema({
 	goal: { 
 		type: String, 
 		unique: true, 
-		required: true 
+		required: false 
 	}
 });
 
