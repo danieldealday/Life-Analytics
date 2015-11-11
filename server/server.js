@@ -3,7 +3,7 @@ var user = require('./User/userModel')
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 var app = express();
-var userController = require('./User/userController');
+var userModel = require('./User/userModel');
 var path = require('path');
 mongoose.connect('mongodb://localhost/userInfo');
 mongoose.connection.once('open', function() {
@@ -43,4 +43,3 @@ app.listen(3000); //listens on port 3000 -> http://localhost:3000/
 
 
 module.exports = app;
-

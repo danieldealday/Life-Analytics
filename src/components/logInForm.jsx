@@ -7,7 +7,7 @@ var LoginForm = React.createClass({
       <div>
         <div id="login" className={(this.props.loginStatus) ? 'tab active':'tab'}>
           <h1>Welcome Back!</h1>
-          <form action="/" method="post">
+          <form>
             <div className="field-wrap">
               <input ref="email" type="email" required autoComplete="off" placeholder="Email Address"/>
             </div>

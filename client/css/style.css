@@ -52,6 +52,7 @@ a:hover {
 }
 
 .logo {
+  display: inline-block;
   font-weight: bold;
   font-size: 32px;
   padding: 10px;
@@ -60,6 +61,11 @@ a:hover {
   float: left;
   line-height: 10px;
   margin-left: 20px;
+}
+
+h2 {
+  display: inline-block;
+  float: left;
 }
 
 .form {
