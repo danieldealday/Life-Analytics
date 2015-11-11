@@ -30,27 +30,27 @@ var Page = React.createClass({
     event.preventDefault();
     console.log('clicked signup button');
     this.setState({
-    	signUpStatus: true, 
+    	signUpStatus: true,
     	loginStatus: false});
   },
   //Fuction passed down to Sign Up Form
   createUser: function(event) {
-   event.preventDefault();
-   // if not prevent default, will make a POST to itself (look like a page refresh)...
-    console.log('inside user created')
-  	var firstName = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.firstName).value
-  	var lastName = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.lastName).value
-  	var email = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.email).value
-  	var password = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.password).value
+    console.log('inside user created');
+  	var firstName = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.firstName).value;
+  	var lastName = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.lastName).value;
+  	var email = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.email).value;
+  	var password = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.password).value;
+
   	var userObject = {
       firstName: firstName,
       lastName: lastName,
       email: email,
       password: password
-  	}
+  	};
     $.ajax({
       url: 'http://localhost:3000/create',
       method: 'POST',
+			contentType: 'application/json',
       data: JSON.stringify(userObject),
       contentType: 'application/json',
       // specify contentType, if not it's URLENCODED query string...
@@ -60,10 +60,10 @@ var Page = React.createClass({
       },
       error: function(xhr, status, err) {
         console.log(err)
-      } 
+      }
     });
 
-
+ event.preventDefault();
 
   },
 
@@ -73,7 +73,7 @@ var Page = React.createClass({
 	render: function(){
 		return(
 			<div>
-				<SignInPage ref="form" signUpStatus={this.state.signUpStatus} loginStatus={this.state.loginStatus} clickLoginButton={this.clickLoginButton} clickSignUpButton={this.clickSignUpButton} createUser={this.createUser} />		
+				<SignInPage ref="form" signUpStatus={this.state.signUpStatus} loginStatus={this.state.loginStatus} clickLoginButton={this.clickLoginButton} clickSignUpButton={this.clickSignUpButton} createUser={this.createUser} />
 			</div>
 		)
 	}

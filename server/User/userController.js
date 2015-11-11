@@ -1,5 +1,4 @@
-
-var User = require('./userModel');
+var User = require('./User');
 var express = require('express');
 var mongoose = require('mongoose');
 
@@ -10,42 +9,35 @@ var mongoose = require('mongoose');
 // var bodyParser = require('body-parser');
 
 var userController = {
-// userController.createUser = createUser;
-// userController.postTasks = postTasks;
+createUser : function (req,res) {
+  var userinfo = '';
+  req.on('data', function(chunk) {
+    userinfo += chunk;
+  });
+  req.on('end',function(){
 
-  createUser: function (req, res) {
-    console.log("recording", req.body);
-
-    User.create(req.body, function (error, results) {
-            if (error) {
+    User.create(JSON.parse(userinfo), function(error){
+      if(error){
         console.log(error);
-        // return res.redirect('/');
+      }else{
+        console.log('User saved');
+        res.redirect('/');
       }
-      else {
-        console.log(results);
-        console.log("User saved");
-      }
+
     });
-  }
+  });
+}
+
 };
+  // User.create(user, function (error) {
+  //   if (error) {
+  //     return res.redirect('/');
+  //   }
+  //   next();
+  // });
 
 
-// function verifyUser (req, res) {
-//   var credentials = req.body;
-//   User.find(req.body, function (err, userData) {
-//     if (err) {
-//       res.redirect('/');
-//     }
-//     return res.redirect('/dashboard');
-//   });
-// }
-
-// function updateUserData () {
-
-// }
 
 
-// module.exports = taskController;
 
 module.exports = userController;
-

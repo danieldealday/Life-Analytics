@@ -15,6 +15,7 @@
     "gulp-notify": "^2.2.0",
     "jquery": "^2.1.4",
     "justgage": "^1.1.0",
+    "mocha": "^2.3.3",
     "mongo": "^0.1.0",
     "mongodb": "^2.0.47",
     "mongoose": "^4.2.4",
@@ -23,7 +24,6 @@
     "react": "^0.14",
     "react-dom": "^0.14.0",
     "reactify": "^1.1.1",
-    "should": "^7.1.1",
     "supertest": "^1.1.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.2.2"
@@ -33,7 +33,7 @@
   },
   "scripts": {
     "start": "gulp",
-    "test": "node_modules/.bin/mocha test/index.js"
+    "test": "mocha ./test"
   },
   "repository": {
     "type": "git",
