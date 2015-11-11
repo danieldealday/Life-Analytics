@@ -10,16 +10,17 @@ var mongoose = require('mongoose');
 
 var userModel = {
 
-  createUser : function (req,res) {
+  createUser: function(req,res) {
     var userinfo = '';
     req.on('data', function(chunk) {
       userinfo += chunk;
     });
-    req.on('end',function(){
-      User.create(JSON.parse(userinfo), function(error){
-        if(error){
+
+    req.on('end',function() {
+      User.create(JSON.parse(userinfo), function(error) {
+        if (error) {
           console.log(error);
-        }else{
+        } else {
           console.log('User saved');
           res.send();
         }
@@ -33,8 +34,8 @@ var userModel = {
     });
     req.on('end', function() {
       updateUserInfo = JSON.parse(updateUserInfo);
-      User.update({email: updateUserInfo.email}, updateUserInfo, {upsert: true}, function(err, result) {
-        if(err) {
+      User.update({ email: updateUserInfo.email }, updateUserInfo, { upsert: true }, function(err, result) {
+        if (err) {
           console.log(err);
         }
         else {
@@ -45,8 +46,30 @@ var userModel = {
         }
       });
     });
-  }
+  },
 
+  verifyUser: function(req, res) {
+    var sentInfo = '';
+    req.on('data', function(chunk) {
+      sentInfo += chunk;
+    });
+    req.on('end', function() {
+      sentInfo = JSON.parse(sentInfo)
+
+      User.findOne({ email: sentInfo.email }, function(error, user) {
+        if(error || user === null) {
+          res.sendStatus(404);
+        } 
+        else if (sentInfo.password === user.password) {
+          res.send();
+          console.log('you logged in');
+        }
+        else {
+          res.sendStatus(404);
+        }
+      }); // closes User.findOne
+    });
+  }
 };
   // User.create(user, function (error) {
   //   if (error) {
