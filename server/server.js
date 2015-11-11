@@ -1,12 +1,14 @@
 var express = require('express');
-// var user = require('./User/User.js')
+var user = require('./User/User.js');
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 var app = express();
+var userController = require('./User/userController');
 var path = require('path');
 mongoose.connect('mongodb://localhost/userInfo');
 mongoose.connection.once('open', function() {
 	console.log('Connected with MongoDB ORM - mongodb-orm');
+	//userController.postData();
 });
 
 // var userInfo = new Schema({
@@ -17,16 +19,15 @@ mongoose.connection.once('open', function() {
 // 	email: { type: String, unique: true }
 // });
 
+// app.get('/', function(req,res){
+// 	res.sendStatus(200);
+// });
 app.use(express.static(path.join(__dirname, './../client/')));
 // app.use(bodyParser());
-app.post('/create', function(req,res) {
-	console.log('ITW WORKSs');
-	res.send(200);
-})
+app.post('/create', userController.createUser);
 // app.get('/', function (req, res) {
 //  res.sendFile(path.join(__dirname, './../client/index.html'));
 // });
-
 
 app.listen(3000); //listens on port 3000 -> http://localhost:3000/
 
