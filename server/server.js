@@ -28,9 +28,9 @@ app.use(express.static(path.join(__dirname, './../client/')));
 
 app.post('/create', userController.createUser);
 
-app.post('/login', function(req,res) {
-	console.log('FIND USER WORKS');
-});
+// app.post('/login', function(req,res) {
+// 	console.log('FIND USER WORKS');
+// });
 
 
 // app.get('/', function (req, res) {

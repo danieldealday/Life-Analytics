@@ -63,30 +63,30 @@ var Page = React.createClass({
       }
     });
   },
-  findUser: function(event) {
-    event.preventDefault();
-    var email = ReactDOM.findDOMNode(this.refs.form.refs.login.refs.email).value
-    var password = ReactDOM.findDOMNode(this.refs.form.refs.login.refs.password).value
-    var userObject = {
-      email: email,
-      password: password
-    }
-    console.log(userObject);
-    console.log('inside find user')
-    $.ajax({
-      url: 'http://localhost:3000/login',
-      method: 'POST',
-      contentType: 'application/json', 
-      data: JSON.stringify(userObject),
-      success: function(res){
-        console.log('login works');
-        console.log(JSON.parse(res));
-      },
-      error: function(xhr, status, err) {
-        console.log(err)
-      } 
-    });
-  },
+  // findUser: function(event) {
+  //   event.preventDefault();
+  //   var email = ReactDOM.findDOMNode(this.refs.form.refs.login.refs.email).value
+  //   var password = ReactDOM.findDOMNode(this.refs.form.refs.login.refs.password).value
+  //   var userObject = {
+  //     email: email,
+  //     password: password
+  //   }
+  //   console.log(userObject);
+  //   console.log('inside find user')
+  //   $.ajax({
+  //     url: 'http://localhost:3000/login',
+  //     method: 'POST',
+  //     contentType: 'application/json', 
+  //     data: JSON.stringify(userObject),
+  //     success: function(res){
+  //       console.log('login works');
+  //       console.log(JSON.parse(res));
+  //     },
+  //     error: function(xhr, status, err) {
+  //       console.log(err)
+  //     } 
+  //   });
+  // },
 
 	render: function(){
 		return(
