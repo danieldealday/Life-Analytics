@@ -1,4 +1,5 @@
-var User = require('./User');
+
+var User = require('./userModel');
 var express = require('express');
 var mongoose = require('mongoose');
 
@@ -9,6 +10,7 @@ var mongoose = require('mongoose');
 // var bodyParser = require('body-parser');
 
 var userController = {
+
 createUser : function (req,res) {
   var userinfo = '';
   req.on('data', function(chunk) {
