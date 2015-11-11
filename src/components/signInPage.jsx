@@ -34,7 +34,7 @@ var SignInPage = React.createClass({
             <div className="tab-content">
             </div>
               <LoginForm ref="login" findUser={this.props.findUser} loginStatus={this.props.loginStatus} />
-            <script src="js/index.js"></script>
+            
           </div>
         </div>
       )
