@@ -25,8 +25,10 @@ var userInfo = new Schema({
 		required: true
 	},
 	goal: {
-		type: String,
-		required: false
+		type: String
+	},
+	streak: {
+		type: Number
 	}
 });
 
