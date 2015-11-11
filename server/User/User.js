@@ -4,30 +4,30 @@ var Schema = mongoose.Schema;
 
 var userInfo = new Schema({
 
-	firstName: { 
+	firstName: {
 		type: String,
-		unique: true, 
-		required: true 
+		// unique: true,
+		// required: true
 	},
-	lastName: { 
+	lastName: {
+		type: String,
+		// unique: true,
+		// required: true
+	},
+	password: {
+		type: String,
+		// unique: true,
+		// required: true
+	},
+	email: {
 		type: String, 
-		unique: true, 
+		unique: true,
 		required: true
 	},
-	password: { 
-		type: String, 
-		unique: true, 
-		required: true 
-	},
-	email: { 
-		type: String, 
-		unique: true, 
-		required: true 
-	},
-	goal: { 
-		type: String, 
-		unique: true, 
-		required: false 
+	goal: {
+		type: String,
+		unique: true,
+		required: false
 	}
 });
 
