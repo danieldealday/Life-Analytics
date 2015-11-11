@@ -5,10 +5,7 @@ var LoginForm = require('./logInForm.jsx')
 var Questionnaire = require('./questionnaire.jsx')
 
 var SignInPage = React.createClass({
- 
-
   render: function() {
-  
     if(this.props.signUpStatus === true) {
       return (
         <div>
@@ -18,16 +15,15 @@ var SignInPage = React.createClass({
               <li onClick={this.props.clickLoginButton} className={(this.props.loginStatus) ? 'tab active':'tab'}><a href="#login">Log In</a></li>
             </ul>
             <div className="tab-content">
-            
+
             </div>
              <SignUpForm  ref="signUp" signUpStatus={this.props.signUpStatus} createUser={this.props.createUser} />
             <script src="js/index.js"></script>
+          </div>
         </div>
-
-      </div>
       )
     }
-    if(this.props.loginStatus === true) {
+    else if(this.props.loginStatus === true) {
       return (
         <div>
           <div className="form">
@@ -36,24 +32,13 @@ var SignInPage = React.createClass({
               <li onClick={this.props.clickLoginButton} className={(this.props.loginStatus) ? 'tab active':'tab'}><a href="#login">Log In</a></li>
             </ul>
             <div className="tab-content">
-        
             </div>
               <LoginForm ref="login" findUser={this.props.findUser} loginStatus={this.props.loginStatus} />
             <script src="js/index.js"></script>
-        </div>
-
-      </div>
-      ) 
-    }
-
-    else if (this.state.demo === true) {
-      return (
-        <div>
-          <Questionnaire />
+          </div>
         </div>
       )
     }
-
   }
 });
 

@@ -1,9 +1,9 @@
-	var express = require('express');
-var user = require('./User/userModel')
+var express = require('express');
+var userController = require('./User/userController');
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 var app = express();
-var userModel = require('./User/userModel');
+// var userModel = require('./User/userModel');
 var path = require('path');
 mongoose.connect('mongodb://localhost/userInfo');
 mongoose.connection.once('open', function() {
@@ -25,7 +25,7 @@ mongoose.connection.once('open', function() {
 app.use(express.static(path.join(__dirname, './../client/')));
 // app.use(bodyParser());
 
-app.post('/create', userModel.createUser);
+app.post('/create', userController.createUser);
 
 app.post('/login', function(req,res) {
 	console.log('FIND USER WORKS');
