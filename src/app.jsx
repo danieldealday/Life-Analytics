@@ -5,6 +5,7 @@ var Questionnaire = require('./components/questionnaire.jsx');
 var SignInPage = require('./components/signInPage.jsx');
 var LoginForm = require('./components/logInForm.jsx');
 var SignUpForm = require('./components/signUpForm.jsx');
+var Dashboard = require('./components/dashboard.jsx');
 // var Graph = require('./../client/components/graph.jsx')
 
 console.log('app.jsx is working!');
@@ -13,7 +14,9 @@ var Page = React.createClass({
 	getInitialState: function(){
 		return {
 			signUpStatus: true,
-      loginStatus: false
+      loginStatus: false,
+			questionnaireStatus: false,
+			dashboardStatus: false,
 		}
 	},
 	//Show Log In Form
@@ -34,13 +37,13 @@ var Page = React.createClass({
     	loginStatus: false});
   },
   //Fuction passed down to Sign Up Form
-  createUser: function(event) { 
+  createUser: function(event) {
     event.preventDefault();
-    console.log('inside user created')
-  	var firstName = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.firstName).value
-  	var lastName = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.lastName).value
-  	var email = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.email).value
-  	var password = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.password).value
+    console.log('inside user created');
+  	var firstName = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.firstName).value;
+  	var lastName = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.lastName).value;
+  	var email = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.email).value;
+  	var password = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.password).value;
   	var userObject = {
       firstName: firstName,
       lastName: lastName,
@@ -50,18 +53,22 @@ var Page = React.createClass({
     $.ajax({
       url: 'http://localhost:3000/create',
       method: 'POST',
-      contentType: 'application/json', 
+      contentType: 'application/json',
       data: JSON.stringify(userObject),
       success: function(res){
         console.log('User Created!');
-        console.log(JSON.parse(res));
-      },
+				this.setState({signUpStatus: false, loginStatus: false, questionnaireStatus: true});
+      }.bind(this),
       error: function(xhr, status, err) {
-        console.log(err)
+        console.log(err);
       }
     });
+
+ 		event.preventDefault();
+
   },
-  findUser: function(event) {
+
+	findUser: function(event) {
     event.preventDefault();
     var email = ReactDOM.findDOMNode(this.refs.form.refs.login.refs.email).value
     var password = ReactDOM.findDOMNode(this.refs.form.refs.login.refs.password).value
@@ -74,7 +81,7 @@ var Page = React.createClass({
     $.ajax({
       url: 'http://localhost:3000/login',
       method: 'POST',
-      contentType: 'application/json', 
+      contentType: 'application/json',
       data: JSON.stringify(userObject),
       success: function(res){
         console.log('login works');
@@ -82,16 +89,32 @@ var Page = React.createClass({
       },
       error: function(xhr, status, err) {
         console.log(err)
-      } 
+      }
     });
   },
 
 	render: function(){
-		return(
-			<div>
-				<SignInPage ref="form" findUser={this.findUser} signUpStatus={this.state.signUpStatus} loginStatus={this.state.loginStatus} clickLoginButton={this.clickLoginButton} clickSignUpButton={this.clickSignUpButton} createUser={this.createUser} />		
-			</div>
-		)
+		if(!this.state.dashboardStatus && !this.state.questionnaireStatus) {
+			return(
+				<div>
+					<SignInPage ref="form" findUser={this.findUser} signUpStatus={this.state.signUpStatus} loginStatus={this.state.loginStatus} clickLoginButton={this.clickLoginButton} clickSignUpButton={this.clickSignUpButton} createUser={this.createUser} />
+				</div>
+			)
+		}
+		else if(!!this.state.questionnaireStatus) {
+			console.log('insideeeee questions');
+			return <div>
+								<Questionnaire />
+						 </div>
+		}
+		else if(!!this.state.dashboardStatus) {
+			// console.log("INSIDE EHRERERR");
+			return(
+				<div>
+					<Dashboard />
+				</div>
+			)
+		}
 	}
 
 
