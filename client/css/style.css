@@ -336,7 +336,7 @@ textarea {
 
  .large-graph {
    height: 610px;
-   width: 600px;
+   width: 800px;
   margin: 0 auto;
    display: block;
  }
@@ -534,4 +534,7 @@ footer {
 
 .percentage {
   margin: auto;
+  width: 800px;
+  position: relative;
+  bottom: 125px;
 }

@@ -10,15 +10,15 @@ var Dashboard = React.createClass({
     }
 
     function clear(ctx) {
-        ctx.clearRect(0, 0, 200, 200);
+        ctx.clearRect(0, 0, 800, 800);
     }
 
     function PercentAnimation(ctx, percent) {
         this.ctx = ctx;
         this.speed = 4;
-        this.x = 100;
-        this.y = 100;
-        this.radius = 50;
+        this.x = 400;
+        this.y = 400;
+        this.radius = 200;
 
         this.setPercent = function(percent) {
             this.degrees = 360 * (percent / 100);
@@ -70,7 +70,7 @@ var Dashboard = React.createClass({
 
         this.drawText = function() {
             ctx.fillStyle = "#ddd";
-            ctx.font = "bold 16px verdana";
+            ctx.font = "bold 32px Titillium Web";
             ctx.textBaseline = 'middle';
             ctx.textAlign = 'center';
             ctx.fillText(' ' + this.percent + '%', this.x, this.y);
@@ -118,7 +118,7 @@ var Dashboard = React.createClass({
         <p className='heading'> Welcome to your Dashboard.</p>
               <div className="large-graph">
                 <div className="percentage">
-                  <canvas id="draw" height="400" width="400"></canvas>
+                  <canvas id="draw" height="800" width="800"></canvas>
                     <form id="test-form">
                       <input type="submit" value="Generate random percentage" />
                     </form>
