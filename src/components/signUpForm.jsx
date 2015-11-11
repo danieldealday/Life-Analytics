@@ -10,14 +10,14 @@ var SignUpForm = React.createClass({
           <form>
             <div className="top-row">
               <div className="field-wrap">
-                <input ref='firstName' type="text" required autoComplete="off" placeholder="First Name"/>
+                <input ref='firstName' type="text"  required autoComplete="off" placeholder="First Name"/>
               </div>
               <div className="field-wrap">
-                <input ref='lastName' type="text" required autoComplete="off" placeholder="Last Name"/>
+                <input ref='lastName' type="text"  required autoComplete="off" placeholder="Last Name"/>
               </div>
             </div>
             <div className="field-wrap">
-              <input ref='email' type="email" required autoComplete="off" placeholder="Email Address"/>
+              <input ref='email' type="email"  required autoComplete="off" placeholder="Email Address"/>
             </div>
             <div className="field-wrap">
               <input ref='password' type="password"  required autoComplete="off" placeholder="Set A Password"/>

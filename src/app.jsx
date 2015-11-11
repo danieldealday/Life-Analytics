@@ -30,7 +30,7 @@ var Page = React.createClass({
     event.preventDefault();
     console.log('clicked signup button');
     this.setState({
-    	signUpStatus: true, 
+    	signUpStatus: true,
     	loginStatus: false});
   },
   //Fuction passed down to Sign Up Form
@@ -46,7 +46,7 @@ var Page = React.createClass({
       lastName: lastName,
       email: email,
       password: password
-  	}
+  	};
     $.ajax({
       url: 'http://localhost:3000/create',
       method: 'POST',
@@ -58,7 +58,7 @@ var Page = React.createClass({
       },
       error: function(xhr, status, err) {
         console.log(err)
-      } 
+      }
     });
   },
   findUser: function(event) {
@@ -74,6 +74,7 @@ var Page = React.createClass({
     $.ajax({
       url: 'http://localhost:3000/login',
       method: 'POST',
+      contentType: 'application/json', 
       data: JSON.stringify(userObject),
       success: function(res){
         console.log('login works');
@@ -83,12 +84,7 @@ var Page = React.createClass({
         console.log(err)
       } 
     });
-
-
   },
-
-
-
 
 	render: function(){
 		return(
