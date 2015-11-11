@@ -1,5 +1,7 @@
 var express = require('express');
-var user = require('./User/userModel.js')
+var userController = require('./User/userController.js');
+var User = require('./User/userModel.js');
+var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 var app = express();
@@ -19,9 +21,9 @@ mongoose.connection.once('open', function() {
 
 app.use(express.static(path.join(__dirname, './../client/')));
 
-// app.use(bodyParser());
+app.use(bodyParser());
 app.post('/create', function(req,res) {
-	console.log('ITW WORKSs');
+	userController.createUser(req, res);
 })
 // app.get('/', function (req, res) {
 //  res.sendFile(path.join(__dirname, './../client/index.html'));
@@ -31,3 +33,7 @@ app.listen(3000); //listens on port 3000 -> http://localhost:3000/
 
 // /test with schema of username, first, last name, password, email
 // enter information into database
+
+// find
+// put in dummy data
+module.exports = app;
