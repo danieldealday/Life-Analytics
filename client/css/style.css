@@ -335,6 +335,7 @@ textarea {
  /* ========= Graphs ========= */
 
  .large-graph {
+   height: 610px;
    width: 600px;
   margin: 0 auto;
    display: block;
@@ -456,7 +457,6 @@ footer {
   clear: both;
 }
 
-<<<<<<< HEAD
 .tasks {
   display: inline;
   float: left;
@@ -529,4 +529,9 @@ footer {
   width: 80%;
   height: 70px;
   line-height: 70px;
+  margin-bottom: 50px;
+}
+
+.percentage {
+  margin: auto;
 }

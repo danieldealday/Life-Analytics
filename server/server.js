@@ -31,6 +31,8 @@ app.post('/login', function(req,res) {
 	console.log('FIND USER WORKS');
 });
 
+app.post('/postQuestion', userController.updateUserInfo);
+
 
 // app.get('/', function (req, res) {
 //  res.sendFile(path.join(__dirname, './../client/index.html'));

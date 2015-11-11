@@ -17,7 +17,8 @@ var Page = React.createClass({
       loginStatus: false,
 			questionnaireStatus: false,
 			dashboardStatus: false,
-		}
+			emailAddress: '',
+		};
 	},
 	//Show Log In Form
   clickLoginButton: function(event) {
@@ -50,34 +51,36 @@ var Page = React.createClass({
       email: email,
       password: password
   	};
-    $.ajax({
-      url: 'http://localhost:3000/create',
-      method: 'POST',
-      contentType: 'application/json',
-      data: JSON.stringify(userObject),
-      success: function(res){
-        console.log('User Created!');
-				this.setState({signUpStatus: false, loginStatus: false, questionnaireStatus: true});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.log(err);
-      }
-    });
-
+			$.ajax({
+	      url: 'http://localhost:3000/create',
+	      method: 'POST',
+	      contentType: 'application/json',
+	      data: JSON.stringify(userObject),
+	      success: function(res){
+	        console.log('User Created!');
+					console.log(userObject);
+					this.setState({signUpStatus: false, loginStatus: false, questionnaireStatus: true, email: email});
+					console.log(this.state.email);
+	      }.bind(this),
+	      error: function(xhr, status, err) {
+	        console.log(err);
+					this.setState({signUpStatus: true, loginStatus: false, questionnaireStatus: false, email: ''});
+	      }
+	    });
  		event.preventDefault();
 
   },
 
 	findUser: function(event) {
     event.preventDefault();
-    var email = ReactDOM.findDOMNode(this.refs.form.refs.login.refs.email).value
-    var password = ReactDOM.findDOMNode(this.refs.form.refs.login.refs.password).value
+    var email = ReactDOM.findDOMNode(this.refs.form.refs.login.refs.email).value;
+    var password = ReactDOM.findDOMNode(this.refs.form.refs.login.refs.password).value;
     var userObject = {
       email: email,
       password: password
-    }
+    };
     console.log(userObject);
-    console.log('inside find user')
+    console.log('inside find user');
     $.ajax({
       url: 'http://localhost:3000/login',
       method: 'POST',
@@ -88,10 +91,35 @@ var Page = React.createClass({
         console.log(JSON.parse(res));
       },
       error: function(xhr, status, err) {
-        console.log(err)
+        console.log(err);
+				this.setState({signUpStatus: true, loginStatus: true, questionnaireStatus: false, email: ''});
       }
     });
   },
+
+	gotQuestion: function(event) {
+		event.preventDefault();
+		var goal = ReactDOM.findDOMNode(this.refs.question.refs.goal).value;
+		var userObject = {
+			email: this.state.email,
+			goal: goal,
+			streak: 0
+		};
+		$.ajax({
+			url: 'http://localhost:3000/postQuestion',
+			method: 'POST',
+			contentType: 'application/json',
+			data: JSON.stringify(userObject),
+			success: function(res){
+				console.log('questionnaire works');
+				// console.log(JSON.parse(res));
+				this.setState({signUpStatus: false, loginStatus: false, questionnaireStatus: false, dashboardStatus: true});
+			}.bind(this),
+			error: function(xhr, status, err) {
+				console.log(err);
+			}
+		});
+	},
 
 	render: function(){
 		if(!this.state.dashboardStatus && !this.state.questionnaireStatus) {
@@ -101,13 +129,13 @@ var Page = React.createClass({
 				</div>
 			)
 		}
-		else if(!!this.state.questionnaireStatus) {
+		else if(this.state.questionnaireStatus) {
 			console.log('insideeeee questions');
 			return <div>
-								<Questionnaire />
+								<Questionnaire ref="question" gotQuestion={this.gotQuestion} />
 						 </div>
 		}
-		else if(!!this.state.dashboardStatus) {
+		else if(this.state.dashboardStatus) {
 			// console.log("INSIDE EHRERERR");
 			return(
 				<div>
