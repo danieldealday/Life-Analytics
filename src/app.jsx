@@ -35,7 +35,8 @@ var Page = React.createClass({
   },
   //Fuction passed down to Sign Up Form
   createUser: function(event) {
-   
+   event.preventDefault();
+   // if not prevent default, will make a POST to itself (look like a page refresh)...
     console.log('inside user created')
   	var firstName = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.firstName).value
   	var lastName = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.lastName).value
@@ -51,6 +52,8 @@ var Page = React.createClass({
       url: 'http://localhost:3000/create',
       method: 'POST',
       data: JSON.stringify(userObject),
+      contentType: 'application/json',
+      // specify contentType, if not it's URLENCODED query string...
       success: function(res){
         console.log('User Created!');
         console.log(JSON.parse(res));

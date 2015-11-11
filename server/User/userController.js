@@ -14,10 +14,10 @@ var userController = {
 // userController.postTasks = postTasks;
 
   createUser: function (req, res) {
+    console.log("recording", req.body);
 
     User.create(req.body, function (error, results) {
-      console.log("recording", req.body);
-      if (error) {
+            if (error) {
         console.log(error);
         // return res.redirect('/');
       }
