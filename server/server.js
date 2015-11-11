@@ -1,4 +1,4 @@
-var express = require('express');
+	var express = require('express');
 var user = require('./User/userModel')
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
@@ -25,7 +25,7 @@ mongoose.connection.once('open', function() {
 app.use(express.static(path.join(__dirname, './../client/')));
 // app.use(bodyParser());
 
-app.post('/create', userController.createUser);
+app.post('/create', userModel.createUser);
 
 app.post('/login', function(req,res) {
 	console.log('FIND USER WORKS');
