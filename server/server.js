@@ -23,13 +23,15 @@ mongoose.connection.once('open', function() {
 // 	res.sendStatus(200);
 // });
 app.use(express.static(path.join(__dirname, './../client/')));
+
 // app.use(bodyParser());
 
 app.post('/create', userController.createUser);
+app.post('/login', userController.verifyUser);
 
-app.post('/login', function(req,res) {
-	console.log('FIND USER WORKS');
-});
+// app.post('/login', function(req,res) {
+// 	console.log('FIND USER WORKS');
+// });
 
 app.post('/postQuestion', userController.updateUserInfo);
 

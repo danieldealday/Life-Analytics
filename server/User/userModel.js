@@ -29,7 +29,6 @@ var userInfo = new Schema({
 	},
 	streak: {
 		type: Number
-
 	}
 });
 

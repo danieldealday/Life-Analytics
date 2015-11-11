@@ -7,7 +7,7 @@ var expect = require('chai').expect;
 // var User = require('./../server/user/userModel');
 // var bcrypt = require('bcryptjs');
 var app = require('./../server/server.js');
-var User = require('./../server/User/User');
+var User = require('./../server/User/userModel');
 
 //
 describe('Creating users', function() {
@@ -29,6 +29,21 @@ describe('Creating users', function() {
     it('should respond to GET request for / with 200', function(done) {
       request(app)
         .get('/')
-        .expect(200, done);
+        .expect(200, done());
     });
   });
+
+  // describe('POST request to "/login" route with incorrect information redirects to "/"', function() {
+  //   it('should respond with route url', function(done) {
+  //     request(app)
+  //     .post('/login')
+  //     .send({"email": "leokee@facebook.com", "password": "hi"})
+  //     .end(function(err, res) {
+  //       User.findOne({"email": "leokee@facebook.com", "password": "hello"}, function(err, user) {
+  //         expect(err).to.be.null;
+  //         expect('/');
+  //         done();
+  //     });
+  //     });
+  //   });
+  // });
