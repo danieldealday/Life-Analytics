@@ -50,7 +50,6 @@ var Page = React.createClass({
     $.ajax({
       url: 'http://localhost:3000/create',
       method: 'POST',
-			contentType: 'application/json',
       data: JSON.stringify(userObject),
       contentType: 'application/json',
       // specify contentType, if not it's URLENCODED query string...
