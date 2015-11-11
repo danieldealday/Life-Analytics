@@ -1,4 +1,3 @@
-
 var User = require('./userModel');
 var express = require('express');
 var mongoose = require('mongoose');
@@ -9,7 +8,7 @@ var mongoose = require('mongoose');
 
 // var bodyParser = require('body-parser');
 
-var userController = {
+var userModel = {
 
 createUser : function (req,res) {
   var userinfo = '';
@@ -37,9 +36,4 @@ createUser : function (req,res) {
   //   }
   //   next();
   // });
-
-
-
-
-
-module.exports = userController;
+module.exports = userModel;

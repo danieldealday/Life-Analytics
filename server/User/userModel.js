@@ -20,14 +20,13 @@ var userInfo = new Schema({
 		// required: true
 	},
 	email: {
-		type: String, 
-		// unique: true,
-		// required: true
-	// },
-	// goal: {
-	// 	type: String,
-	// 	unique: true,
-	// 	required: false
+		type: String,
+		unique: true,
+		required: true
+	},
+	goal: {
+		type: String,
+		required: false
 	}
 });
 
