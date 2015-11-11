@@ -1,5 +1,5 @@
 
-var User = require('./User');
+var User = require('./userModel');
 var express = require('express');
 var mongoose = require('mongoose');
 
