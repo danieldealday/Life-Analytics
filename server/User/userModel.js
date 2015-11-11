@@ -21,13 +21,13 @@ var userInfo = new Schema({
 	},
 	email: {
 		type: String, 
-		unique: true,
-		required: true
-	},
-	goal: {
-		type: String,
-		unique: true,
-		required: false
+		// unique: true,
+		// required: true
+	// },
+	// goal: {
+	// 	type: String,
+	// 	unique: true,
+	// 	required: false
 	}
 });
 

@@ -28,14 +28,11 @@ app.use(express.static(path.join(__dirname, './../client/')));
 
 app.post('/create', userController.createUser);
 
-<<<<<<< HEAD
-=======
 app.post('/login', function(req,res) {
 	console.log('FIND USER WORKS');
 });
 
 
->>>>>>> master
 // app.get('/', function (req, res) {
 //  res.sendFile(path.join(__dirname, './../client/index.html'));
 // });

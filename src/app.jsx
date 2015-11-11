@@ -34,15 +34,6 @@ var Page = React.createClass({
     	loginStatus: false});
   },
   //Fuction passed down to Sign Up Form
-<<<<<<< HEAD
-  createUser: function(event) {
-    console.log('inside user created');
-  	var firstName = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.firstName).value;
-  	var lastName = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.lastName).value;
-  	var email = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.email).value;
-  	var password = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.password).value;
-
-=======
   createUser: function(event) { 
     event.preventDefault();
     console.log('inside user created')
@@ -50,7 +41,6 @@ var Page = React.createClass({
   	var lastName = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.lastName).value
   	var email = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.email).value
   	var password = ReactDOM.findDOMNode(this.refs.form.refs.signUp.refs.password).value
->>>>>>> master
   	var userObject = {
       firstName: firstName,
       lastName: lastName,
@@ -60,12 +50,9 @@ var Page = React.createClass({
     $.ajax({
       url: 'http://localhost:3000/create',
       method: 'POST',
-<<<<<<< HEAD
-=======
       contentType: 'application/json', 
->>>>>>> master
       data: JSON.stringify(userObject),
-      contentType: 'application/json',
+
       // specify contentType, if not it's URLENCODED query string...
       success: function(res){
         console.log('User Created!');
