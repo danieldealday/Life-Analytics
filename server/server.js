@@ -3,7 +3,7 @@ var user = require('./User/User.js');
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 var app = express();
-var userController = require('./User/userController');
+var userModel = require('./User/userModel');
 var path = require('path');
 mongoose.connect('mongodb://localhost/userInfo');
 mongoose.connection.once('open', function() {
@@ -24,7 +24,7 @@ mongoose.connection.once('open', function() {
 // });
 app.use(express.static(path.join(__dirname, './../client/')));
 // app.use(bodyParser());
-app.post('/create', userController.createUser);
+app.post('/create', userModel.createUser);
 // app.get('/', function (req, res) {
 //  res.sendFile(path.join(__dirname, './../client/index.html'));
 // });
