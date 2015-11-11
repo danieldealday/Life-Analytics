@@ -21,12 +21,16 @@ app.use(express.static(path.join(__dirname, './../client/')));
 // app.use(bodyParser());
 app.post('/create', function(req,res) {
 	console.log('ITW WORKSs');
+	res.send(200);
 })
 // app.get('/', function (req, res) {
 //  res.sendFile(path.join(__dirname, './../client/index.html'));
 // });
 
+
 app.listen(3000); //listens on port 3000 -> http://localhost:3000/
 
 // /test with schema of username, first, last name, password, email
 // enter information into database
+
+module.exports = app;
