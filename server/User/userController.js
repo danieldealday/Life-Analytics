@@ -46,7 +46,7 @@ var userModel = {
         }
       });
     });
-  }
+  },
 
   verifyUser: function(req, res) {
     var sentInfo = '';
