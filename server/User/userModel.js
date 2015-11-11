@@ -1,39 +1,33 @@
-var User = require('./User');
-var express = require('express');
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-// var User = require('./userModel');
-// var express = require('express');
-// var mongoose = require('mongoose');
 
-// var bodyParser = require('body-parser');
+var userInfo = new Schema({
 
-var userModel = {
+	firstName: {
+		type: String,
+		// unique: true,
+		// required: true
+	},
+	lastName: {
+		type: String,
+		// unique: true,
+		// required: true
+	},
+	password: {
+		type: String,
+		// unique: true,
+		// required: true
+	},
+	email: {
+		type: String,
+		unique: true,
+		required: true
+	},
+	goal: {
+		type: String,
+		required: false
+	}
+});
 
-createUser : function (req,res) {
-  var userinfo = '';
-  req.on('data', function(chunk) {
-    userinfo += chunk;
-  });
-  req.on('end',function(){
-
-    User.create(JSON.parse(userinfo), function(error){
-      if(error){
-        console.log(error);
-      }else{
-        console.log('User saved');
-        res.redirect('/');
-      }
-
-    });
-  });
-}
-
-};
-  // User.create(user, function (error) {
-  //   if (error) {
-  //     return res.redirect('/');
-  //   }
-  //   next();
-  // });
-module.exports = userModel;
+module.exports = mongoose.model('User', userInfo);

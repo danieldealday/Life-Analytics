@@ -522,3 +522,11 @@ footer {
   width: 436px;
   height: 96px;
 }
+
+#question {
+  margin: auto;
+  text-align: center;
+  width: 80%;
+  height: 70px;
+  line-height: 70px;
+}
