@@ -54,12 +54,12 @@ var userModel = {
       sentInfo += chunk;
     });
     req.on('end', function() {
-      sentInfo = JSON.parse(sentInfo)
+      sentInfo = JSON.parse(sentInfo);
 
       User.findOne({ email: sentInfo.email }, function(error, user) {
         if(error || user === null) {
           res.sendStatus(404);
-        } 
+        }
         else if (sentInfo.password === user.password) {
           res.send(user);
           console.log('you logged in');
@@ -70,6 +70,9 @@ var userModel = {
       }); // closes User.findOne
     });
   }
+
+
+
 };
   // User.create(user, function (error) {
   //   if (error) {
