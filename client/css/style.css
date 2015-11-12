@@ -345,13 +345,17 @@ textarea {
  }
 
  #no-btn {
-  color: red;
+  background-color: #d9534f;
+ }
+
+ #no-btn:hover {
+  background-color: #c9302c;
  }
 
  .large-graph {
    height: 610px;
-   width: 600px;
-   margin: 0 auto;
+   width: 800px;
+  margin: 0 auto;
    display: block;
  }
  .graph {
@@ -548,4 +552,7 @@ footer {
 
 .percentage {
   margin: auto;
+  width: 800px;
+  position: relative;
+  bottom: 125px;
 }

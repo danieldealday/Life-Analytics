@@ -29,6 +29,9 @@ var userInfo = new Schema({
 	},
 	streak: {
 		type: Number
+	},
+	phoneNumber:{
+		type: Number
 	}
 });
 
