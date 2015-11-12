@@ -7,89 +7,13 @@ var $ = require('jquery');
 var Dashboard = React.createClass({
   componentWillReceiveProps: function(nextProps) {
     var streak = nextProps.streak;
-    if(steak > 25) {
-      secondRing(nextProps);
-    }
-    function secondRing(nextProps) {
-      var streak = nextProps.streak - 25;
-      function init() {
-          var c = document.getElementById('draw');
-          return c.getContext('2d');
-      }
-
-      function clear(ctx) {
-          ctx.clearRect(0, 0, 800, 800);
-      }
-      function PercentAnimation(ctx, percent) {
-          this.ctx = ctx;
-          this.speed = 4;
-          this.x = 400;
-          this.y = 400;
-          this.radius = 200;
-
-          this.setPercent = function(percent) {
-              this.degrees = 360 * (percent / 100);
-              this._animationOffset = this.degrees;
-              this.percent = percent;
-          };
-
-          // Part of initialization
-          this.setPercent(percent);
-
-          this.startAnimation = function() {
-              var self = this;
-              clear(this.ctx);
-              this._interval = setInterval(function() {
-                  self.drawAnimation();
-              }, 10);
-          };
-
-          this.drawArc = function() {
-              var startDegrees = -140;
-              var endDegrees = startDegrees + this.degrees - this._animationOffset;
-              // Degrees to radians
-              var startAngle = startDegrees / 180 * Math.PI;
-              var endAngle = endDegrees / 180 * Math.PI;
-              // Draw arc
-              this.setLineStyles();
-              ctx.beginPath();
-              ctx.arc(this.x, this.y, this.radius, startAngle, endAngle, false);
-              ctx.stroke();
-              this.drawText();
-          };
-
-          this.setLineStyles = function() {
-            if(this.percent >= 100) {
-              ctx.strokeStyle = 'rgb(255, 255, 0)';
-            }
-            else {
-              ctx.strokeStyle = 'rgb(26, 177, 136)';
-            }
-              ctx.lineWidth = 10;
-          };
-
-          this.drawAnimation = function() {
-              if (this._animationOffset < 0) {
-                  this._animationOffset = 0;
-              }
-              clear(this.ctx);
-              this.drawArc();
-              this._animationOffset -= this.speed;
-              if (this._animationOffset < 0) {
-                  clearInterval(this._interval);
-              }
-          };
-
-          this.drawText = function() {
-              ctx.fillStyle = "#ddd";
-              ctx.font = "bold 32px Titillium Web";
-              ctx.textBaseline = 'middle';
-              ctx.textAlign = 'center';
-              ctx.fillText(' ' + this.percent + '%', this.x, this.y);
-          };
-    };
+    console.log(streak);
     function init() {
         var c = document.getElementById('draw');
+        return c.getContext('2d');
+    }
+    function init2() {
+        var c = document.getElementById('draw2');
         return c.getContext('2d');
     }
 
@@ -135,12 +59,7 @@ var Dashboard = React.createClass({
         };
 
         this.setLineStyles = function() {
-          if(this.percent >= 100) {
-            ctx.strokeStyle = 'rgb(255, 255, 0)';
-          }
-          else {
             ctx.strokeStyle = 'rgb(26, 177, 136)';
-          }
             ctx.lineWidth = 10;
         };
 
@@ -166,14 +85,101 @@ var Dashboard = React.createClass({
 
     }
 
+    function PercentAnimation2(ctx, percent) {
+        this.ctx = ctx;
+        this.speed = 4;
+        this.x = 500;
+        this.y = 500;
+        this.radius = 250;
+
+        this.setPercent = function(percent) {
+            this.degrees = 360 * (percent / 100);
+            this._animationOffset = this.degrees;
+            this.percent = percent;
+        };
+
+        // Part of initialization
+        this.setPercent(percent);
+
+        this.startAnimation = function() {
+            var self = this;
+            clear(this.ctx);
+            this._interval = setInterval(function() {
+                self.drawAnimation();
+            }, 10);
+        };
+
+        this.drawArc = function() {
+            var startDegrees = 40;
+            var endDegrees = startDegrees + this.degrees - this._animationOffset;
+            // Degrees to radians
+            var startAngle = startDegrees / 180 * Math.PI;
+            var endAngle = endDegrees / 180 * Math.PI;
+            // Draw arc
+            this.setLineStyles();
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, startAngle, endAngle, false);
+            ctx.stroke();
+            this.drawText();
+        };
+
+        this.setLineStyles = function() {
+            ctx.strokeStyle = 'rgb(255, 255, 0)';
+            ctx.lineWidth = 10;
+        };
+
+        this.drawAnimation = function() {
+            if (this._animationOffset < 0) {
+                this._animationOffset = 0;
+            }
+            clear(this.ctx);
+            this.drawArc();
+            this._animationOffset -= this.speed;
+            if (this._animationOffset < 0) {
+                clearInterval(this._interval);
+            }
+        };
+
+        this.drawText = function() {
+            ctx.fillStyle = "#ddd";
+            ctx.font = "bold 32px Titillium Web";
+            ctx.textBaseline = 'middle';
+            ctx.textAlign = 'center';
+            ctx.fillText(' ', this.x, this.y);
+        };
+
+    }
+
+
+
+
+
     /**
      * Test PercentageAnimation
      */
     $(document).ready(function() {
-        var ctx = init();
-        var percentage = streak * 4;
-        var anim = new PercentAnimation(ctx, percentage);
-        anim.startAnimation();
+
+        if(streak > 25) {
+          var ctx = init();
+          var percentage = streak * 4;
+          var anim = new PercentAnimation(ctx, percentage);
+          anim.startAnimation();
+
+          var ctx2 = init2();
+          var percentage2 = streak * 4 - 100;
+          var anim2 = new PercentAnimation2(ctx2, percentage2);
+          anim2.startAnimation();
+        }
+        else {
+          var ctx = init();
+          var percentage = streak * 4;
+          var anim = new PercentAnimation(ctx, percentage);
+          anim.startAnimation();
+          var ctx2 = init2();
+          var percentage2 = 0;
+          var anim2 = new PercentAnimation2(ctx2, percentage2);
+          anim2.startAnimation();
+        }
 
         // $('#test-form').submit(function(e) {
         //     e.preventDefault();
@@ -191,6 +197,10 @@ var Dashboard = React.createClass({
         var c = document.getElementById('draw');
         return c.getContext('2d');
     }
+    function init2() {
+        var c = document.getElementById('draw2');
+        return c.getContext('2d');
+    }
 
     function clear(ctx) {
         ctx.clearRect(0, 0, 800, 800);
@@ -234,12 +244,7 @@ var Dashboard = React.createClass({
         };
 
         this.setLineStyles = function() {
-          if(this.percent >= 100) {
-            ctx.strokeStyle = 'rgb(255, 255, 0)';
-          }
-          else {
             ctx.strokeStyle = 'rgb(26, 177, 136)';
-          }
             ctx.lineWidth = 10;
         };
 
@@ -265,14 +270,101 @@ var Dashboard = React.createClass({
 
     }
 
+    function PercentAnimation2(ctx, percent) {
+        this.ctx = ctx;
+        this.speed = 4;
+        this.x = 500;
+        this.y = 500;
+        this.radius = 250;
+
+        this.setPercent = function(percent) {
+            this.degrees = 360 * (percent / 100);
+            this._animationOffset = this.degrees;
+            this.percent = percent;
+        };
+
+        // Part of initialization
+        this.setPercent(percent);
+
+        this.startAnimation = function() {
+            var self = this;
+            clear(this.ctx);
+            this._interval = setInterval(function() {
+                self.drawAnimation();
+            }, 10);
+        };
+
+        this.drawArc = function() {
+            var startDegrees = -40;
+            var endDegrees = startDegrees + this.degrees - this._animationOffset;
+            // Degrees to radians
+            var startAngle = startDegrees / 180 * Math.PI;
+            var endAngle = endDegrees / 180 * Math.PI;
+            // Draw arc
+            this.setLineStyles();
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, startAngle, endAngle, false);
+            ctx.stroke();
+            this.drawText();
+        };
+
+        this.setLineStyles = function() {
+            ctx.strokeStyle = 'rgb(255, 255, 0)';
+            ctx.lineWidth = 10;
+        };
+
+        this.drawAnimation = function() {
+            if (this._animationOffset < 0) {
+                this._animationOffset = 0;
+            }
+            clear(this.ctx);
+            this.drawArc();
+            this._animationOffset -= this.speed;
+            if (this._animationOffset < 0) {
+                clearInterval(this._interval);
+            }
+        };
+
+        this.drawText = function() {
+            ctx.fillStyle = "#ddd";
+            ctx.font = "bold 32px Titillium Web";
+            ctx.textBaseline = 'middle';
+            ctx.textAlign = 'center';
+            ctx.fillText(' ', this.x, this.y);
+        };
+
+    }
+
+
+
+
+
     /**
      * Test PercentageAnimation
      */
     $(document).ready(function() {
-        var ctx = init();
-        var percentage = streak * 4;
-        var anim = new PercentAnimation(ctx, percentage);
-        anim.startAnimation();
+
+        if(streak > 25) {
+          var ctx = init();
+          var percentage = streak * 4;
+          var anim = new PercentAnimation(ctx, percentage);
+          anim.startAnimation();
+
+          var ctx2 = init2();
+          var percentage2 = streak * 4 - 100;
+          var anim2 = new PercentAnimation2(ctx2, percentage2);
+          anim2.startAnimation();
+        }
+        else {
+          var ctx = init();
+          var percentage = streak * 4;
+          var anim = new PercentAnimation(ctx, percentage);
+          anim.startAnimation();
+          var ctx2 = init2();
+          var percentage2 = 0;
+          var anim2 = new PercentAnimation2(ctx2, percentage2);
+          anim2.startAnimation();
+        }
 
         // $('#test-form').submit(function(e) {
         //     e.preventDefault();
@@ -308,10 +400,17 @@ var Dashboard = React.createClass({
                 <button className="button button-block" id='yes-btn' onClick={this.props.increaseStreak}>Yes</button>
               </div>
               <div className="large-graph">
-                <p className='heading'>Your current goal is: {this.props.goal}</p>
+                <p className='heading'>Your current goal for 25 days: {this.props.goal}</p>
+                <p className='heading'>Streak: {this.props.streak}</p>
                 <div className="percentage">
                   <canvas id="draw" height="800" width="800"></canvas>
                 </div>
+                <div className="percentage2">
+                  <canvas id="draw2" height="800" width="800"></canvas>
+                </div>
+
+
+
               </div>
 
                 <footer>
