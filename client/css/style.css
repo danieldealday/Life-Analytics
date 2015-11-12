@@ -340,8 +340,11 @@ textarea {
 
  #yes-btn, #no-btn {
   display: inline-block;
+  position: relative;
+  clear: both;
   margin: 0px 30px;
   width: 25%;
+  z-index: 9;
  }
 
  #no-btn {
@@ -353,10 +356,11 @@ textarea {
  }
 
  .large-graph {
-   height: 610px;
+   height: 750px;
    width: 800px;
   margin: 0 auto;
    display: block;
+
  }
  .graph {
    display: block;
@@ -555,4 +559,12 @@ footer {
   width: 800px;
   position: relative;
   bottom: 125px;
+}
+
+.percentage2 {
+  margin: auto;
+  width: 800px;
+  position: relative;
+  margin-top: -1031px;
+  margin-left: -100px;
 }

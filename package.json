@@ -32,7 +32,7 @@
   },
   "scripts": {
     "start": "gulp",
-    "test": "node_modules/.bin/mocha -w"
+    "test": "export NODE_ENV=test && ./node_modules/.bin/mocha -w"
   },
   "repository": {
     "type": "git",
