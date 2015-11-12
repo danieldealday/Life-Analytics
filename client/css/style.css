@@ -333,11 +333,25 @@ textarea {
 }
 
  /* ========= Graphs ========= */
+ .button-container {
+  margin: auto;
+  text-align: center;
+ }
+
+ #yes-btn, #no-btn {
+  display: inline-block;
+  margin: 0px 30px;
+  width: 25%;
+ }
+
+ #no-btn {
+  color: red;
+ }
 
  .large-graph {
    height: 610px;
    width: 600px;
-  margin: 0 auto;
+   margin: 0 auto;
    display: block;
  }
  .graph {

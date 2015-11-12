@@ -41,7 +41,7 @@ var userModel = {
         else {
           console.log(result);
           console.log("yay");
-          res.send();
+          res.send(result);
           // res.redirect('/dashboard');
         }
       });
@@ -61,7 +61,7 @@ var userModel = {
           res.sendStatus(404);
         } 
         else if (sentInfo.password === user.password) {
-          res.send();
+          res.send(user);
           console.log('you logged in');
         }
         else {

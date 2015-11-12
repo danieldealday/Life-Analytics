@@ -99,6 +99,8 @@ var Dashboard = React.createClass({
 
   },
   render: function() {
+    console.log("inside Dashboard ", this.props.goal)
+    console.log("inside Dashboard ", this.props.streak)
     return(
       <div>
         <header>
@@ -116,6 +118,11 @@ var Dashboard = React.createClass({
           </nav>
         </header>
         <p className='heading'> Welcome to your Dashboard.</p>
+             
+              <div className="button-container">
+                <button className="button button-block" id='no-btn'>No</button>
+                <button className="button button-block" id='yes-btn'>Yes</button>
+              </div>
               <div className="large-graph">
                 <div className="percentage">
                   <canvas id="draw" height="400" width="400"></canvas>
@@ -126,11 +133,9 @@ var Dashboard = React.createClass({
               </div>
 
               <div className="clear"></div>
-
               <div className="tab-content">
-
                 <div className="clear"></div>
-                  <div className="clear"></div>
+                <div className="clear"></div>
               </div>
                 <footer>
                     <nav id='footer'>
