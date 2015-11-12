@@ -1,13 +1,10 @@
-
+var React = require('react/addons');
+var Chai = require('chai');
 var request = require('supertest');
-// var app = require('./../server/server');
 var expect = require('chai').expect;
-// var Cookies = require('cookies');
-// var Session = require('./../server/session/sessionModel');
-// var User = require('./../server/user/userModel');
-// var bcrypt = require('bcryptjs');
 var app = require('./../server/server.js');
 var User = require('./../server/User/userModel');
+
 
 //
 describe('Creating users', function() {

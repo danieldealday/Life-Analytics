@@ -353,10 +353,11 @@ textarea {
  }
 
  .large-graph {
-   height: 610px;
+   height: 675px;
    width: 800px;
   margin: 0 auto;
    display: block;
+   
  }
  .graph {
    display: block;
