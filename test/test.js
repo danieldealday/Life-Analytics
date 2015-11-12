@@ -37,10 +37,10 @@ describe('POST request to "/login" route with incorrect information sends an err
   it('should respond with error', function(done) {
     request(app)
     .post('/login')
-    .send({"email": "leokee@facebook.com", "password": "hi"})
+    .send({"firstName": "Bryan", "lastName" : "Truong" , "password" : "password1", "email" : "bht@gmai.com"})
     .end(function(err, res) {
-      User.findOne({"email": "leokee@faceboo.com"}, function(err, user) {
-        expect(err).to.not.be.null;
+      User.findOne({"email": "bht@g.com"}, function(err, user) {
+        expect(err).to.be.null;
         done();
       });
     });
