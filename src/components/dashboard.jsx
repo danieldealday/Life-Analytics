@@ -78,23 +78,21 @@ var Dashboard = React.createClass({
 
     }
 
-
-
     /**
      * Test PercentageAnimation
      */
     $(document).ready(function() {
         var ctx = init();
-        var percentage = 000;
+        var percentage = 24 * 4;
         var anim = new PercentAnimation(ctx, percentage);
         anim.startAnimation();
 
-        $('#test-form').submit(function(e) {
-            e.preventDefault();
-            var percent = Math.floor(Math.random() * 101);
-            anim.setPercent(percent);
-            anim.startAnimation();
-        });
+        // $('#test-form').submit(function(e) {
+        //     e.preventDefault();
+        //     var percent = Math.floor(Math.random() * 101);
+        //     anim.setPercent(percent);
+        //     anim.startAnimation();
+        // });
     });
 
   },
@@ -119,19 +117,11 @@ var Dashboard = React.createClass({
               <div className="large-graph">
                 <div className="percentage">
                   <canvas id="draw" height="800" width="800"></canvas>
-                    <form id="test-form">
-                      <input type="submit" value="Generate random percentage" />
-                    </form>
                 </div>
+                <button className="button button-block" id="leftButton">No</button>
+                <button className="button button-block" id="rightButton">Yes</button>
               </div>
 
-              <div className="clear"></div>
-
-              <div className="tab-content">
-
-                <div className="clear"></div>
-                  <div className="clear"></div>
-              </div>
                 <footer>
                     <nav id='footer'>
                       <h2 className="logo-foot">LIFE ANALYTICS</h2>
