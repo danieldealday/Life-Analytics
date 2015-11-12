@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "bcrypt": "^0.8.5",
+    "bluebird": "^3.0.5",
     "body-parser": "^1.14.1",
     "browserify": "^10.2.4",
     "cookie-parser": "^1.4.0",
@@ -22,6 +23,7 @@
     "react": "^0.14",
     "react-dom": "^0.14.0",
     "reactify": "^1.1.1",
+    "twilio": "^2.5.2",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.2.2"
   },
@@ -30,7 +32,7 @@
   },
   "scripts": {
     "start": "gulp",
-    "test": "node_modules/.bin/mocha -w"  
+    "test": "node_modules/.bin/mocha -w"
   },
   "repository": {
     "type": "git",
