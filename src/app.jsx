@@ -18,6 +18,8 @@ var Page = React.createClass({
 			questionnaireStatus: false,
 			dashboardStatus: false,
 			emailAddress: '',
+      goal: '',
+      streak: 0
 		};
 	},
 	//Show Log In Form
@@ -102,12 +104,14 @@ var Page = React.createClass({
       data: JSON.stringify(userObject),
       success: function(res){
         console.log('login works');
-
+        console.log(res)
         this.setState({ 
           signUpStatus: false,
           loginStatus: false,
           questionnaireStatus: false,
-          dashboardStatus: true
+          dashboardStatus: true,
+          goal: res.goal,
+          streak: res.streak
         });
       }.bind(this),
       error: function(xhr, status, error) {
@@ -132,8 +136,15 @@ var Page = React.createClass({
 			data: JSON.stringify(userObject),
 			success: function(res){
 				console.log('questionnaire works');
+        console.log("this is in the gotQuestion", goal);
 				// console.log(JSON.parse(res));
-				this.setState({signUpStatus: false, loginStatus: false, questionnaireStatus: false, dashboardStatus: true});
+				this.setState({
+          signUpStatus: false, 
+          loginStatus: false, 
+          questionnaireStatus: false, 
+          dashboardStatus: true,
+          goal: goal
+        });
 			}.bind(this),
 			error: function(xhr, status, err) {
 				console.log(err);
@@ -161,7 +172,7 @@ var Page = React.createClass({
 			// console.log("INSIDE EHRERERR");
 			return(
 				<div>
-					<Dashboard emailAddress={this.state.emailAddress} />
+					<Dashboard goal={this.state.goal} streak={this.state.streak} emailAddress={this.state.emailAddress} />
 				</div>
 			)
 		}
