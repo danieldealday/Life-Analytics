@@ -98,7 +98,7 @@ var Page = React.createClass({
       success: function(res){
         console.log('login works');
         console.log(res)
-        this.setState({ 
+        this.setState({
           signUpStatus: false,
           loginStatus: false,
           questionnaireStatus: false,
@@ -108,7 +108,7 @@ var Page = React.createClass({
         });
       }.bind(this),
       error: function(xhr, status, error) {
-        alert("Invalid email and/or password. Please try again."); 
+        alert("Invalid email and/or password. Please try again.");
 
       }
     }); // closes ajax
@@ -132,9 +132,9 @@ var Page = React.createClass({
         console.log("this is in the gotQuestion", goal);
 				// console.log(JSON.parse(res));
 				this.setState({
-          signUpStatus: false, 
-          loginStatus: false, 
-          questionnaireStatus: false, 
+          signUpStatus: false,
+          loginStatus: false,
+          questionnaireStatus: false,
           dashboardStatus: true,
           goal: goal
         });
@@ -146,32 +146,32 @@ var Page = React.createClass({
 	},
   resetStreak: function(event) {
     event.preventDefault();
-    this.setState({streak: 0});
     userObject = {
       email: this.state.emailAddress,
-      streak: 0     
-    }
+      streak: 0
+    };
     $.ajax({
       url: 'http://localhost:3000/updateStreak',
       method: 'POST',
       contentType: 'application/json',
       data: JSON.stringify(userObject),
       success: function(res) {
-        console.log('reset streak success')
-        console.log('increaseStreak ',res)
-      },
+        console.log('reset streak success');
+        console.log('increaseStreak ',res);
+				this.setState({streak: 0});
+      }.bind(this),
       error: function(xhr, status, err) {
-       console.log(err); 
+       console.log(err);
       }
     });
   },
 
   increaseStreak: function(event) {
     event.preventDefault();
-    this.setState({streak: this.state.streak + 1})
+    var newStreak = this.state.streak + 1;
     userObject = {
       email: this.state.emailAddress,
-      streak: this.state.streak     
+      streak: newStreak
     }
     $.ajax({
       url: 'http://localhost:3000/updateStreak',
@@ -179,14 +179,16 @@ var Page = React.createClass({
       contentType: 'application/json',
       data: JSON.stringify(userObject),
       success: function(res) {
-        console.log('increase streak success')
-        console.log('increaseStreak ',res)
-      },
+        console.log('increase streak success');
+        console.log('increaseStreak ',res);
+				this.setState({streak: newStreak});
+      }.bind(this),
       error: function(xhr, status, err) {
-       console.log(err); 
+       console.log(err);
       }
     });
   },
+
 
 	render: function(){
 		if(!this.state.dashboardStatus && !this.state.questionnaireStatus) {
@@ -198,14 +200,13 @@ var Page = React.createClass({
 		}
 		else if(this.state.questionnaireStatus) {
 			console.log('insideeeee questions');
-			return( 
+			return(
         <div>
 					<Questionnaire ref="question" emailAddress={this.state.emailAddress} gotQuestion={this.gotQuestion} />
 				</div>
         )
 		}
 		else if(this.state.dashboardStatus) {
-			// console.log("INSIDE EHRERERR");
 			return(
 				<div>
 					<Dashboard goal={this.state.goal} streak={this.state.streak} emailAddress={this.state.emailAddress} resetStreak={this.resetStreak} increaseStreak={this.increaseStreak} />
