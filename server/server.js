@@ -10,7 +10,8 @@ var authToken = '006148567c8e9b1a9ab08e8e1f72b36f';
 var client = require('twilio')(accountSid, authToken);
 // var userModel = require('./User/userModel');
 var path = require('path');
-mongoose.connect('mongodb://localhost/userInfo');
+var mongoURI = process.env.NODE_ENV === 'test' ? 'mongodb://localhost/test' : 'mongodb://localhost/userInfo';
+mongoose.connect(mongoURI);
 mongoose.connection.once('open', function() {
 	console.log('Connected with MongoDB ORM - mongodb-orm');
 	//userController.postData();
@@ -51,7 +52,7 @@ mongoose.connection.once('open', function() {
 // 	var responsetext = theMessages.messages[1].body;
 // 	console.log(responsetext);
 //
-// if(responsetext === 'Yes' ){
+// if(responsetext.toLowerCase() === 'yes' ){
 // 	User.findOne({firstName: 'Leonard'},function(error,user){
 // 		if(error){
 // 			console.log(error);

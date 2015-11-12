@@ -9,7 +9,7 @@ var Questionnaire = React.createClass({
 
         <header>
           <nav id='nav'>
-            <h2 className="logo">QUESTIONNAIRE</h2>
+            <h2 className="logo">LIFE ANALYTICS</h2>
 
             <div className="space"></div>
 
