@@ -120,8 +120,8 @@ var Dashboard = React.createClass({
         <p className='heading'> Welcome to your Dashboard.</p>
              
               <div className="button-container">
-                <button className="button button-block" id='no-btn'>No</button>
-                <button className="button button-block" id='yes-btn'>Yes</button>
+                <button className="button button-block" id='no-btn' onClick={this.props.resetStreak}>No</button>
+                <button className="button button-block" id='yes-btn' onClick={this.props.increaseStreak}>Yes</button>
               </div>
               <div className="large-graph">
                 <div className="percentage">
