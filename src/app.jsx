@@ -105,7 +105,7 @@ var Page = React.createClass({
       success: function(res){
         console.log('login works');
         console.log(res)
-        this.setState({ 
+        this.setState({
           signUpStatus: false,
           loginStatus: false,
           questionnaireStatus: false,
@@ -115,7 +115,7 @@ var Page = React.createClass({
         });
       }.bind(this),
       error: function(xhr, status, error) {
-        alert("Invalid email and/or password. Please try again."); 
+        alert("Invalid email and/or password. Please try again.");
 
       }
     }); // closes ajax
@@ -139,9 +139,9 @@ var Page = React.createClass({
         console.log("this is in the gotQuestion", goal);
 				// console.log(JSON.parse(res));
 				this.setState({
-          signUpStatus: false, 
-          loginStatus: false, 
-          questionnaireStatus: false, 
+          signUpStatus: false,
+          loginStatus: false,
+          questionnaireStatus: false,
           dashboardStatus: true,
           goal: goal
         });
@@ -162,14 +162,13 @@ var Page = React.createClass({
 		}
 		else if(this.state.questionnaireStatus) {
 			console.log('insideeeee questions');
-			return( 
+			return(
         <div>
 					<Questionnaire ref="question" emailAddress={this.state.emailAddress} gotQuestion={this.gotQuestion} />
 				</div>
         )
 		}
 		else if(this.state.dashboardStatus) {
-			// console.log("INSIDE EHRERERR");
 			return(
 				<div>
 					<Dashboard goal={this.state.goal} streak={this.state.streak} emailAddress={this.state.emailAddress} />

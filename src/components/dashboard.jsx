@@ -4,6 +4,8 @@ var $ = require('jquery');
 
 var Dashboard = React.createClass({
   componentDidMount: function() {
+    var streak = this.props.streak;
+    console.log(streak);
     function init() {
         var c = document.getElementById('draw');
         return c.getContext('2d');
@@ -83,7 +85,7 @@ var Dashboard = React.createClass({
      */
     $(document).ready(function() {
         var ctx = init();
-        var percentage = 24 * 4;
+        var percentage = streak * 4;
         var anim = new PercentAnimation(ctx, percentage);
         anim.startAnimation();
 
@@ -122,11 +124,10 @@ var Dashboard = React.createClass({
                 <button className="button button-block" id='yes-btn'>Yes</button>
               </div>
               <div className="large-graph">
+                <p className='heading'>Your current goal is: {this.props.goal}</p>
                 <div className="percentage">
                   <canvas id="draw" height="800" width="800"></canvas>
                 </div>
-                <button className="button button-block" id="leftButton">No</button>
-                <button className="button button-block" id="rightButton">Yes</button>
               </div>
 
                 <footer>
