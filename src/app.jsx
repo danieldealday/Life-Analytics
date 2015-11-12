@@ -146,32 +146,32 @@ var Page = React.createClass({
 	},
   resetStreak: function(event) {
     event.preventDefault();
-    this.setState({streak: 0});
     userObject = {
       email: this.state.emailAddress,
-      streak: 0     
-    }
+      streak: 0
+    };
     $.ajax({
       url: 'http://localhost:3000/updateStreak',
       method: 'POST',
       contentType: 'application/json',
       data: JSON.stringify(userObject),
       success: function(res) {
-        console.log('reset streak success')
-        console.log('increaseStreak ',res)
-      },
+        console.log('reset streak success');
+        console.log('increaseStreak ',res);
+				this.setState({streak: 0});
+      }.bind(this),
       error: function(xhr, status, err) {
-       console.log(err); 
+       console.log(err);
       }
     });
   },
 
   increaseStreak: function(event) {
     event.preventDefault();
-    this.setState({streak: this.state.streak + 1})
+    var newStreak = this.state.streak + 1;
     userObject = {
       email: this.state.emailAddress,
-      streak: this.state.streak     
+      streak: newStreak
     }
     $.ajax({
       url: 'http://localhost:3000/updateStreak',
@@ -179,14 +179,16 @@ var Page = React.createClass({
       contentType: 'application/json',
       data: JSON.stringify(userObject),
       success: function(res) {
-        console.log('increase streak success')
-        console.log('increaseStreak ',res)
-      },
+        console.log('increase streak success');
+        console.log('increaseStreak ',res);
+				this.setState({streak: newStreak});
+      }.bind(this),
       error: function(xhr, status, err) {
-       console.log(err); 
+       console.log(err);
       }
     });
   },
+
 
 	render: function(){
 		if(!this.state.dashboardStatus && !this.state.questionnaireStatus) {

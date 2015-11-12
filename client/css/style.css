@@ -345,7 +345,11 @@ textarea {
  }
 
  #no-btn {
-  color: red;
+  background-color: #d9534f;
+ }
+
+ #no-btn:hover {
+  background-color: #c9302c;
  }
 
  .large-graph {
