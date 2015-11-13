@@ -4,7 +4,7 @@ var request = require('supertest');
 var expect = require('chai').expect;
 var app = require('./../server/server.js');
 var User = require('./../server/User/userModel');
-var questionnaire = require('./../src/components/questionnaire.jsx');
+// var Questionnaire = require('./../src/components/questionnaire.jsx');
 var TestUtils = React.addons.TestUtils;
 
 //
