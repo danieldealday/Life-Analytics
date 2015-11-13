@@ -52,6 +52,7 @@ a:hover {
 }
 
 .logo {
+  display: inline-block;
   font-weight: bold;
   font-size: 32px;
   padding: 10px;
@@ -60,6 +61,11 @@ a:hover {
   float: left;
   line-height: 10px;
   margin-left: 20px;
+}
+
+h2 {
+  display: inline-block;
+  float: left;
 }
 
 .form {
@@ -327,11 +333,34 @@ textarea {
 }
 
  /* ========= Graphs ========= */
+ .button-container {
+  margin: auto;
+  text-align: center;
+ }
+
+ #yes-btn, #no-btn {
+  display: inline-block;
+  position: relative;
+  clear: both;
+  margin: 0px 30px;
+  width: 25%;
+  z-index: 9;
+ }
+
+ #no-btn {
+  background-color: #d9534f;
+ }
+
+ #no-btn:hover {
+  background-color: #c9302c;
+ }
 
  .large-graph {
-   width: 600px;
+   height: 750px;
+   width: 800px;
   margin: 0 auto;
    display: block;
+
  }
  .graph {
    display: block;
@@ -450,7 +479,6 @@ footer {
   clear: both;
 }
 
-<<<<<<< HEAD
 .tasks {
   display: inline;
   float: left;
@@ -515,4 +543,28 @@ footer {
   margin: 0 auto;
   width: 436px;
   height: 96px;
+}
+
+#question {
+  margin: auto;
+  text-align: center;
+  width: 80%;
+  height: 70px;
+  line-height: 70px;
+  margin-bottom: 50px;
+}
+
+.percentage {
+  margin: auto;
+  width: 800px;
+  position: relative;
+  bottom: 125px;
+}
+
+.percentage2 {
+  margin: auto;
+  width: 800px;
+  position: relative;
+  margin-top: -1031px;
+  margin-left: -100px;
 }
