@@ -4,10 +4,18 @@ var request = require('supertest');
 var expect = require('chai').expect;
 var app = require('./../server/server.js');
 var User = require('./../server/User/userModel');
-// var questionnaire = require('./../src/components/questionnaire.jsx');
+var questionnaire = require('./../src/components/questionnaire.jsx');
 var TestUtils = React.addons.TestUtils;
 
 //
+describe('GET index.html', function() {
+  it('should respond to GET request for / with 200', function(done) {
+    request(app)
+      .get('/')
+      .expect(200, done());
+  });
+});
+
 describe('Creating users', function() {
 
   before(function(done) {
@@ -31,13 +39,19 @@ describe('Creating users', function() {
     });
   });
 
-  describe('GET index.html', function() {
-    it('should respond to GET request for / with 200', function(done) {
-      request(app)
-        .get('/')
-        .expect(200, done());
+describe('POST request to "/login" route with incorrect information sends an error', function() {
+  it('should respond with error', function(done) {
+    request(app)
+    .post('/login')
+    .send({"firstName": "Bryan", "lastName" : "Truong" , "password" : "password1", "email" : "bht@gmai.com"})
+    .end(function(err, res) {
+      User.findOne({"email": "bht@g.com"}, function(err, user) {
+        expect(err).to.be.null;
+        done();
+      });
     });
   });
+});
 
 // describe('Render Page', function() {
 //   before(function() {
