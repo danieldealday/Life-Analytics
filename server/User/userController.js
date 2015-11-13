@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 
 // var bodyParser = require('body-parser');
 
-var userModel = {
+var userController = {
 
   createUser: function(req,res) {
     var userinfo = '';
@@ -80,4 +80,4 @@ var userModel = {
   //   }
   //   next();
   // });
-module.exports = userModel;
+module.exports = userController;
