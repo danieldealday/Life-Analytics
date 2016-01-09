@@ -3,7 +3,6 @@ var ReactDOM = require('react-dom');
 
 var SignUpForm = React.createClass({
   render: function() {
-    console.log('this is signup form');
     return (
         <div id="signup" className={(this.props.signUpStatus) ? 'tab active':'tab'}>
           <h1>Sign Up for Free</h1>

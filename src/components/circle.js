@@ -10,7 +10,6 @@ module.exports = {
         return c.getContext('2d');
     },
 
-   
     PercentAnimation: function(ctx, percent) {
         this.ctx = ctx;
         this.speed = 4;
@@ -41,9 +40,11 @@ module.exports = {
         this.drawArc = function() {
             var startDegrees = -140;
             var endDegrees = startDegrees + this.degrees - this._animationOffset;
+
             // Degrees to radians
             var startAngle = startDegrees / 180 * Math.PI;
             var endAngle = endDegrees / 180 * Math.PI;
+
             // Draw arc
             this.setLineStyles();
             ctx.beginPath();
@@ -112,9 +113,11 @@ module.exports = {
         this.drawArc = function() {
             var startDegrees = 40;
             var endDegrees = startDegrees + this.degrees - this._animationOffset;
+
             // Degrees to radians
             var startAngle = startDegrees / 180 * Math.PI;
             var endAngle = endDegrees / 180 * Math.PI;
+
             // Draw arc
             this.setLineStyles();
             ctx.beginPath();
@@ -150,6 +153,5 @@ module.exports = {
             ctx.textAlign = 'center';
             ctx.fillText(' ', this.x, this.y);
         };
-
     }
 };

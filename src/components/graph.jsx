@@ -22,11 +22,10 @@ var Graph = React.createClass({
       rCount: 0,
       gCount: 0,
       bCount: 0
-    }
+    };
   },
   updateGraph: function(input) {
     if (input == 'r') {
-      console.log(this.state.rCount);
       if (this.state.rCount > 5) {
         var holderObj = {};
         for (var i = 0; i < 5; i++){
@@ -46,7 +45,6 @@ var Graph = React.createClass({
       }
   }
   if (input == 'b') {
-    console.log(this.state.rCount);
     if (this.state.bCount > 5) {
       var holderObj = {};
       for (var i = 0; i < 5; i++){
@@ -67,7 +65,6 @@ var Graph = React.createClass({
 }
 ​
 if (input == 'g') {
-  console.log(this.state.rCount);
   if (this.state.gCount > 5) {
     var holderObj = {};
     for (var i = 0; i < 5; i++){
@@ -112,17 +109,26 @@ if (input == 'g') {
 ​
     return (
     <div>
-    <button onClick={this.updateGraph.bind(this,'r')}>Update Red</button><button onClick={this.updateGraph.bind(this,'g')}>Update Green</button><button onClick={this.updateGraph.bind(this,'b')}>Update Blue</button>
-    <div className="graph">
-      <p className='heading'>FINANCIAL</p>
-      <div>
-        <img src="./images/graph-blank.png" alt="" style={style2}/>
-        {stuffs}
+      <button onClick={this.updateGraph.bind(this,'r')}>
+        Update Red
+      </button>
+      <button onClick={this.updateGraph.bind(this,'g')}>
+        Update Green
+      </button>
+      <button onClick={this.updateGraph.bind(this,'b')}>
+        Update Blue
+      </button>
+      <div className="graph">
+        <p className='heading'>
+          FINANCIAL
+        </p>
+        <div>
+          <img src="./images/graph-blank.png" alt="" style={style2} />
+          {stuffs}
+        </div>
       </div>
     </div>
-  </div>
     )
   }
 });
 module.exports = Graph;
-

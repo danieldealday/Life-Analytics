@@ -25,4 +25,4 @@ db.createCollection('User', {
       weeklyContribution: {type: Number},
       bonus: null
   }
-})
+});
